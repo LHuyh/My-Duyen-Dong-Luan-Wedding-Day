@@ -1,115 +1,277 @@
-/* ================= TOKENS ================= */
-:root{
-  --bg-deep:#1B2B20;       /* xanh rêu đậm */
-  --bg-deep-2:#233A2A;
-  --paper:#FBF6EC;         /* giấy mời ngà */
-  --gold:#B99457;          /* vàng đồng cổ */
-  --gold-soft:#D8C08F;
-  --rose:#C98A82;          /* hồng đất */
-  --ink:#21201C;           /* mực đen ấm */
-  --cream-text:#F3EEE1;
-  --font-display:'Playfair Display', serif;
-  --font-body:'Be Vietnam Pro', sans-serif;
-  --max-w:1100px;
+/* ===========================================================
+   WEBSITE WEDDING V2
+   Author : ChatGPT x Long 😄
+   Theme  : Emerald Luxury
+=========================================================== */
+
+
+/* ===========================================================
+   RESET
+=========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{
+
+    scroll-behavior:smooth;
+
+}
+
 body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--font-body);
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block;}
 
-.eyebrow{
-  font-family:var(--font-body);
-  text-transform:uppercase;
-  letter-spacing:0.28em;
-  font-size: 0.9rem;;
-  color:var(--gold-soft);
-  margin:0 0 12px;
-  text-align:center;
-}
-.eyebrow--dark{color:var(--gold);}
+    font-family:'Manrope',sans-serif;
 
-.section{
-  max-width:var(--max-w);
-  margin:0 auto;
-  padding:90px 24px;
-  text-align:center;
-}
-.section__title{
-  font-family:var(--font-display);
-  font-weight:600;
-  font-size:clamp(1.8rem,3.6vw,2.6rem);
-  margin:0 0 40px;
-  color:var(--ink);
+    background:#15231D;
+
+    color:#ffffff;
+
+    overflow-x:hidden;
+
 }
 
-/* ================= DOT NAV ================= */
-.dotnav{
-  position:fixed;
-  right:22px;
-  top:50%;
-  transform:translateY(-50%);
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  z-index:50;
-}
-.dot{
-  width:9px;height:9px;
-  border-radius:50%;
-  background:rgba(27,43,32,0.25);
-  position:relative;
-  transition:background 0.3s;
-}
-.dot.active,.dot:hover{background:var(--gold);}
-.dot::after{
-  content:attr(data-label);
-  position:absolute;
-  right:20px;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:0.7rem;
-  letter-spacing:0.05em;
-  white-space:nowrap;
-  color:var(--ink);
-  background:var(--paper);
-  padding:3px 8px;
-  border-radius:3px;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.2s;
-  box-shadow:0 2px 8px rgba(0,0,0,0.12);
-}
-.dot:hover::after{opacity:1;}
-@media (max-width:720px){ .dotnav{display:none;} }
 
-/* ================= HERO ================= */
+/* ===========================================================
+   BIẾN MÀU
+=========================================================== */
+
+:root{
+
+    --green:#15231D;
+
+    --green-light:#203229;
+
+    --gold:#C7A86B;
+
+    --white:#F6F3EE;
+
+    --gray:#A8A8A8;
+
+    --shadow:0 20px 60px rgba(0,0,0,.25);
+
+}
+
+
+/* ===========================================================
+   LINK
+=========================================================== */
+
+a{
+
+    text-decoration:none;
+
+}
+
+
+/* ===========================================================
+   ẢNH
+=========================================================== */
+
+img{
+
+    display:block;
+
+    width:100%;
+
+}
+
+
+/* ===========================================================
+   SECTION
+=========================================================== */
+
+section{
+
+    padding:120px 8%;
+
+}
+
+
+/* ===========================================================
+   TITLE
+=========================================================== */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+}
+
+.section-title p{
+
+    color:var(--gold);
+
+    text-transform:uppercase;
+
+    letter-spacing:5px;
+
+    font-size:.85rem;
+
+    margin-bottom:15px;
+
+}
+
+.section-title h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:3rem;
+
+    font-weight:500;
+
+    color:var(--white);
+
+}
+
+
+/* ===========================================================
+   INTRO
+=========================================================== */
+
+.intro{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#15231D;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+.intro__overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle,#C7A86B22,transparent 70%);
+
+}
+
+.intro__content{
+
+    position:relative;
+
+    text-align:center;
+
+    max-width:650px;
+
+    padding:40px;
+
+}
+
+.intro__label{
+
+    color:var(--gold);
+
+    letter-spacing:6px;
+
+    margin-bottom:30px;
+
+}
+
+.intro__title{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:4.8rem;
+
+    font-weight:400;
+
+    color:var(--white);
+
+    line-height:1.1;
+
+}
+
+.intro__title span{
+
+    display:block;
+
+    color:var(--gold);
+
+    margin:10px 0;
+
+}
+
+.intro__quote{
+
+    margin:40px auto;
+
+    max-width:450px;
+
+    line-height:2;
+
+    color:#d9d9d9;
+
+}
+
+.intro__button{
+
+    background:transparent;
+
+    border:1px solid var(--gold);
+
+    color:var(--gold);
+
+    padding:16px 45px;
+
+    cursor:pointer;
+
+    letter-spacing:4px;
+
+    transition:.4s;
+
+}
+
+.intro__button:hover{
+
+    background:var(--gold);
+
+    color:#15231D;
+
+}
+/* ===========================================================
+   HERO
+=========================================================== */
+
 .hero{
 
     position:relative;
 
-    height:100vh;
-
-    overflow:hidden;
+    min-height:100vh;
 
     display:flex;
 
-    align-items:center;
-
     justify-content:center;
 
-    text-align:center;
+    align-items:center;
+
+    overflow:hidden;
 
 }
 
-.hero-image{
+
+/* ===========================================================
+   ẢNH NỀN HERO
+=========================================================== */
+
+.hero__background{
 
     position:absolute;
 
@@ -121,409 +283,1248 @@ img{max-width:100%;display:block;}
 
     object-fit:cover;
 
-    transform:scale(1.05);
+    animation:heroZoom 18s linear infinite alternate;
 
 }
 
-.hero-overlay{
+
+/* ===========================================================
+   LỚP PHỦ MÀU
+=========================================================== */
+
+.hero__overlay{
 
     position:absolute;
 
     inset:0;
 
     background:
-
     linear-gradient(
-        rgba(15,31,22,.60),
-        rgba(15,31,22,.60)
+        rgba(21,35,29,.70),
+        rgba(21,35,29,.70)
     );
-
-    backdrop-filter:blur(2px);
 
 }
 
-.hero-content{
+
+/* ===========================================================
+   KHỐI NỘI DUNG HERO
+=========================================================== */
+
+.hero__content{
 
     position:relative;
 
     z-index:2;
 
-    max-width:700px;
+    width:100%;
 
-    padding:40px;
+    max-width:900px;
 
-}
+    text-align:center;
 
-.hero-label{
-
-    letter-spacing:6px;
-
-    color:#C8A96A;
-
-    font-size:.85rem;
-
-    margin-bottom:40px;
+    padding:30px;
 
 }
 
-.hero-title{
+
+/* ===========================================================
+   DÒNG TRÂN TRỌNG KÍNH MỜI
+=========================================================== */
+
+.hero__label{
+
+    color:var(--gold);
+
+    text-transform:uppercase;
+
+    letter-spacing:8px;
+
+    font-size:.9rem;
+
+    margin-bottom:25px;
+
+}
+
+
+/* ===========================================================
+   TÊN CÔ DÂU CHÚ RỂ
+=========================================================== */
+
+.hero__title{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(3.5rem,8vw,6.5rem);
+
+    font-weight:500;
+
+    color:var(--white);
 
     display:flex;
 
     flex-direction:column;
 
-    gap:14px;
+    gap:12px;
 
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:clamp(4rem,8vw,7rem);
-
-    font-weight:400;
-
-    font-style:italic;
-
-    color:#F7F2EB;
-
-    line-height:1;
-
-    margin:0;
+    line-height:1.1;
 
 }
 
-.hero-and{
 
-    color:#C8A96A;
+/* ===========================================================
+   DẤU &
+=========================================================== */
 
-    font-size:.6em;
+.hero__amp{
 
-    font-style:normal;
+    color:var(--gold);
+
+    font-size:4rem;
+
+    font-weight:300;
 
 }
 
-.hero-date{
 
-    margin-top:45px;
+/* ===========================================================
+   NGÀY CƯỚI
+=========================================================== */
+
+.hero__date{
+
+    margin-top:40px;
+
+    font-size:1.25rem;
 
     letter-spacing:8px;
 
-    color:#C8A96A;
+    color:var(--gold);
 
 }
 
-.hero-line{
+
+/* ===========================================================
+   ĐƯỜNG KẺ
+=========================================================== */
+
+.hero__line{
 
     width:120px;
 
     height:1px;
 
-    background:#C8A96A;
+    background:var(--gold);
 
-    margin:30px auto;
-
-}
-
-.hero-desc{
-
-    color:#ECE8DF;
-
-    font-size:1.05rem;
-
-    line-height:1.8;
+    margin:35px auto;
 
 }
 
-.hero-button{
+
+/* ===========================================================
+   MÔ TẢ
+=========================================================== */
+
+.hero__text{
+
+    max-width:600px;
+
+    margin:auto;
+
+    line-height:2;
+
+    color:#ECECEC;
+
+    font-size:1rem;
+
+}
+
+
+/* ===========================================================
+   NÚT KHÁM PHÁ
+=========================================================== */
+
+.hero__button{
 
     display:inline-block;
 
-    margin-top:40px;
+    margin-top:50px;
 
-    padding:16px 42px;
+    padding:16px 50px;
 
-    border:1px solid #C8A96A;
+    border:1px solid var(--gold);
 
-    color:#C8A96A;
+    color:var(--gold);
 
-    text-decoration:none;
-
-    letter-spacing:3px;
+    letter-spacing:4px;
 
     transition:.35s;
 
 }
 
-.hero-button:hover{
 
-    background:#C8A96A;
+.hero__button:hover{
 
-    color:#132118;
+    background:var(--gold);
 
-}
-.hero__sub{
-  font-size:1rem;
-  color:rgba(243,238,225,0.85);
-  margin:0;
-}
-.scroll-cue{
-  position:absolute;
-  bottom:32px;
-  left:50%;
-  transform:translateX(-50%);
-}
-.scroll-cue span{
-  display:block;
-  width:1px;
-  height:44px;
-  background:linear-gradient(to bottom, var(--gold), transparent);
-  animation:scrollpulse 1.8s ease-in-out infinite;
-}
-@keyframes scrollpulse{
-  0%,100%{opacity:0.3;}
-  50%{opacity:1;}
+    color:#15231D;
+
 }
 
-/* ================= DIVIDER (chữ ký hoa nhài) ================= */
-.divider{
-  max-width:220px;
-  margin:0 auto;
-  padding:36px 0;
-}
-.divider svg{width:100%;height:auto;display:block;margin:0 auto;}
-.divider path{
-  fill:none;
-  stroke:var(--gold);
-  stroke-width:1.4;
-  stroke-linecap:round;
-  stroke-dasharray:300;
-  stroke-dashoffset:300;
-  transition:stroke-dashoffset 1.4s ease;
-}
-.divider.in-view path{stroke-dashoffset:0;}
-.divider circle{
-  fill:var(--gold-soft);
-  opacity:0;
-  transition:opacity 0.6s ease 0.8s;
-}
-.divider.in-view circle{opacity:1;}
 
-/* ================= COUNTDOWN ================= */
-.countdown{background:var(--paper);}
-.countdown__grid{
-  display:flex;
-  gap:18px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-.countdown__box{
-  background:var(--bg-deep);
-  color:var(--cream-text);
-  min-width:90px;
-  padding:22px 10px;
-  border-radius:2px;
-  position:relative;
-}
-.countdown__box::before{
-  content:'';
-  position:absolute;
-  inset:6px;
-  border:1px solid rgba(185,148,87,0.4);
-}
-.countdown__box .num{
-  display:block;
-  font-family:var(--font-display);
-  font-size:2.2rem;
-  font-weight:600;
-  color:var(--gold-soft);
-}
-.countdown__box .label{
-  display:block;
-  font-size:0.7rem;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  margin-top:4px;
-  color:rgba(243,238,225,0.75);
+/* ===========================================================
+   NÚT NHẠC
+=========================================================== */
+
+.music-button{
+
+    position:fixed;
+
+    right:30px;
+
+    bottom:30px;
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(15px);
+
+    color:var(--gold);
+
+    cursor:pointer;
+
+    z-index:999;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
 }
 
-/* ================= STORY / TIMELINE ================= */
+
+.music-button:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+/* ===========================================================
+   ICON NHẠC
+=========================================================== */
+
+.music-button i{
+
+    font-size:22px;
+
+}
+
+
+/* ===========================================================
+   HIỆU ỨNG XOAY
+=========================================================== */
+
+.music-button.playing{
+
+    animation:rotateMusic 6s linear infinite;
+
+}
+
+
+/* ===========================================================
+   ANIMATION ZOOM HERO
+=========================================================== */
+
+@keyframes heroZoom{
+
+    from{
+
+        transform:scale(1);
+
+    }
+
+    to{
+
+        transform:scale(1.12);
+
+    }
+
+}
+
+
+/* ===========================================================
+   ANIMATION XOAY NÚT NHẠC
+=========================================================== */
+
+@keyframes rotateMusic{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+/* ===========================================================
+   COUNTDOWN
+=========================================================== */
+
+.countdown{
+
+    background:#1A2B22;
+
+    position:relative;
+
+}
+
+
+.countdown-wrapper{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+    max-width:1100px;
+
+    margin:auto;
+
+}
+
+
+.count-card{
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:18px;
+
+    padding:45px 20px;
+
+    text-align:center;
+
+    transition:.35s;
+
+}
+
+
+.count-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:var(--gold);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+}
+
+
+.count-card span{
+
+    display:block;
+
+    font-size:4rem;
+
+    font-family:'Cormorant Garamond',serif;
+
+    color:var(--gold);
+
+}
+
+
+.count-card small{
+
+    display:block;
+
+    margin-top:12px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:#ddd;
+
+}
+
+
+/* ===========================================================
+   LOVE STORY
+=========================================================== */
+
+.story{
+
+    background:var(--green);
+
+}
+
+
 .timeline{
-  list-style:none;
-  margin:0 auto;
-  padding:0;
-  max-width:640px;
-  text-align:left;
-  border-left:1px solid rgba(185,148,87,0.4);
-}
-.timeline__item{
-  padding:0 0 34px 28px;
-  position:relative;
-}
-.timeline__item::before{
-  content:'';
-  position:absolute;
-  left:-5px;
-  top:6px;
-  width:9px;height:9px;
-  border-radius:50%;
-  background:var(--gold);
-}
-.timeline__year{
-  font-family:var(--font-display);
-  font-weight:600;
-  font-style:italic;
-  color:var(--gold);
-  display:block;
-  margin-bottom:6px;
-  font-size:1.15rem;
-}
-.timeline__text{margin:0;color:var(--ink);}
 
-/* ================= EVENT ================= */
-.event__cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:24px;
-  margin-bottom:40px;
-}
-.event__card{
-  background:var(--bg-deep);
-  color:var(--cream-text);
-  padding:32px 26px;
-  text-align:left;
-}
-.event__card h3{
-  font-family:var(--font-display);
-  font-style:italic;
-  color:var(--gold-soft);
-  margin:0 0 12px;
-  font-size:1.4rem;
-}
-.event__time{margin:0 0 10px;color:var(--gold);font-size:0.95rem;}
-.event__place{margin:0 0 20px;color:rgba(243,238,225,0.85);}
-.event__map iframe{
-  width:100%;
-  height:320px;
-  border:0;
-  filter:grayscale(0.15) sepia(0.08);
+    max-width:950px;
+
+    margin:auto;
+
+    position:relative;
+
 }
 
-/* ================= BUTTONS ================= */
-.btn{
-  display:inline-block;
-  padding:11px 26px;
-  font-size:0.85rem;
-  letter-spacing:0.08em;
-  text-transform:uppercase;
-  text-decoration:none;
-  cursor:pointer;
-  border:1px solid var(--gold);
-  transition:all 0.25s ease;
-}
-.btn--ghost{color:var(--gold-soft);background:transparent;}
-.btn--ghost:hover{background:var(--gold);color:var(--bg-deep);}
-.btn--solid{background:var(--bg-deep);color:var(--cream-text);border-color:var(--bg-deep);}
-.btn--solid:hover{background:var(--gold);border-color:var(--gold);color:var(--bg-deep);}
 
-/* ================= GALLERY ================= */
-.gallery__grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
-}
-.gallery__item{
-  margin:0;
-  aspect-ratio:4/5;
-  overflow:hidden;
-  background:var(--bg-deep-2);
-}
-.gallery__item img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform 0.5s ease;
-}
-.gallery__item:hover img{transform:scale(1.06);}
-@media (max-width:640px){
-  .gallery__grid{grid-template-columns:repeat(2,1fr);}
+.timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:0;
+
+    width:2px;
+
+    height:100%;
+
+    background:rgba(199,168,107,.45);
+
+    transform:translateX(-50%);
+
 }
 
-/* ================= RSVP ================= */
-.rsvp__note{max-width:480px;margin:0 auto 34px;color:#4a4a42;}
-.rsvp__form{
-  max-width:520px;
-  margin:0 auto;
-  text-align:left;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
-.field{display:flex;flex-direction:column;gap:6px;font-size:0.85rem;}
-.field span, .field legend{
-  letter-spacing:0.05em;
-  color:var(--ink);
-  font-weight:500;
-  padding:0;
-}
-.field input[type="text"],
-.field input[type="tel"],
-.field input[type="number"],
-.field textarea{
-  border:none;
-  border-bottom:1px solid rgba(27,43,32,0.35);
-  background:transparent;
-  padding:9px 4px;
-  font-family:var(--font-body);
-  font-size:1rem;
-  color:var(--ink);
-  outline:none;
-}
-.field input:focus,.field textarea:focus{border-bottom-color:var(--gold);}
-.field--radio{border:none;padding:0;display:flex;gap:22px;flex-wrap:wrap;}
-.field--radio label{display:flex;align-items:center;gap:6px;font-weight:400;}
-.rsvp__status{font-size:0.85rem;color:var(--gold);min-height:1.2em;}
 
-/* ================= GIFT ================= */
-.gift{background:var(--bg-deep-2);}
-.gift__note{max-width:480px;margin:0 auto 34px;color:rgba(243,238,225,0.85);}
-.gift .section__title,.gift .eyebrow{color:var(--cream-text);}
-.gift .eyebrow--dark{color:var(--gold-soft);}
-.gift__cards{
-  display:flex;
-  gap:20px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-.gift__card{
-  background:var(--paper);
-  padding:24px 30px;
-  min-width:220px;
-}
-.gift__card h4{
-  font-family:var(--font-display);
-  font-style:italic;
-  margin:0 0 8px;
-  color:var(--bg-deep);
-}
-.gift__card p{margin:2px 0;font-size:0.9rem;color:#3a3a34;}
+.timeline-item{
 
-/* ================= FOOTER ================= */
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:90px;
+
+    position:relative;
+
+}
+
+
+.timeline-item:nth-child(even){
+
+    flex-direction:row-reverse;
+
+}
+
+
+.timeline-year{
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:50%;
+
+    background:var(--gold);
+
+    color:var(--green);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:2rem;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-weight:600;
+
+    z-index:2;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+
+}
+
+
+.timeline-content{
+
+    width:42%;
+
+    background:#203229;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+}
+
+
+.timeline-content:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+.timeline-content h3{
+
+    color:var(--gold);
+
+    font-size:1.8rem;
+
+    margin-bottom:15px;
+
+    font-family:'Cormorant Garamond',serif;
+
+}
+
+
+.timeline-content p{
+
+    line-height:1.9;
+
+    color:#ECECEC;
+
+}
+
+
+/* ===========================================================
+   EVENT
+=========================================================== */
+
+.event{
+
+    background:#1A2B22;
+
+}
+
+
+.event-wrapper{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:40px;
+
+    max-width:1100px;
+
+    margin:auto;
+
+}
+
+
+.event-card{
+
+    background:#203229;
+
+    border-radius:22px;
+
+    padding:50px;
+
+    text-align:center;
+
+    transition:.35s;
+
+    border:1px solid rgba(255,255,255,.05);
+
+}
+
+
+.event-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:var(--gold);
+
+}
+
+
+.event-card i{
+
+    font-size:3rem;
+
+    color:var(--gold);
+
+    margin-bottom:30px;
+
+}
+
+
+.event-card h3{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:2rem;
+
+    margin-bottom:20px;
+
+}
+
+
+.event-card p{
+
+    line-height:2;
+
+    color:#E7E7E7;
+
+}
+
+
+.event-card a{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:14px 36px;
+
+    border:1px solid var(--gold);
+
+    color:var(--gold);
+
+    transition:.35s;
+
+}
+
+
+.event-card a:hover{
+
+    background:var(--gold);
+
+    color:var(--green);
+
+}
+/* ===========================================================
+   GALLERY
+=========================================================== */
+
+.gallery{
+
+    background:var(--green);
+
+}
+
+.gallery-grid{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    columns:3 320px;
+
+    column-gap:22px;
+
+}
+
+.gallery-item{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    margin-bottom:22px;
+
+    cursor:pointer;
+
+    break-inside:avoid;
+
+    box-shadow:var(--shadow);
+
+}
+
+.gallery-item img{
+
+    width:100%;
+
+    transition:.6s;
+
+}
+
+.gallery-item:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.gallery-item::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        transparent,
+        rgba(0,0,0,.45)
+    );
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.gallery-item:hover::after{
+
+    opacity:1;
+
+}
+
+
+
+/* ===========================================================
+   LIGHTBOX
+=========================================================== */
+
+.lightbox{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.92);
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+}
+
+.lightbox.active{
+
+    display:flex;
+
+}
+
+.lightbox img{
+
+    max-width:90%;
+
+    max-height:90vh;
+
+    border-radius:16px;
+
+}
+
+.close-lightbox{
+
+    position:absolute;
+
+    top:30px;
+
+    right:40px;
+
+    font-size:55px;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+
+
+/* ===========================================================
+   GIFT
+=========================================================== */
+
+.gift{
+
+    background:#1A2B22;
+
+}
+
+.gift-wrapper{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:40px;
+
+}
+
+.gift-card{
+
+    background:#203229;
+
+    border-radius:24px;
+
+    padding:45px;
+
+    text-align:center;
+
+    transition:.35s;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.gift-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:var(--gold);
+
+}
+
+.gift-card h3{
+
+    font-family:'Cormorant Garamond',serif;
+
+    color:var(--gold);
+
+    font-size:2rem;
+
+    margin-bottom:25px;
+
+}
+
+.gift-card img{
+
+    width:220px;
+
+    margin:25px auto;
+
+    border-radius:14px;
+
+    background:white;
+
+    padding:10px;
+
+}
+
+.gift-card p{
+
+    margin-top:20px;
+
+    font-size:1.2rem;
+
+}
+
+.gift-card small{
+
+    display:block;
+
+    margin-top:10px;
+
+    color:#cccccc;
+
+}
+
+
+
+/* ===========================================================
+   RSVP
+=========================================================== */
+
+.rsvp{
+
+    background:var(--green);
+
+    text-align:center;
+
+}
+
+.rsvp-text{
+
+    max-width:650px;
+
+    margin:0 auto 45px;
+
+    line-height:2;
+
+    color:#dddddd;
+
+}
+
+.rsvp-button{
+
+    display:inline-block;
+
+    padding:18px 60px;
+
+    border:1px solid var(--gold);
+
+    color:var(--gold);
+
+    letter-spacing:4px;
+
+    transition:.35s;
+
+}
+
+.rsvp-button:hover{
+
+    background:var(--gold);
+
+    color:var(--green);
+
+}
+
+
+
+/* ===========================================================
+   FOOTER
+=========================================================== */
+
 .footer{
-  background:var(--bg-deep);
-  color:var(--cream-text);
-  text-align:center;
-  padding:60px 24px 40px;
-}
-.footer__names{
-  font-family:var(--font-display);
-  font-style:italic;
-  font-size:1.8rem;
-  color:var(--gold-soft);
-  margin:0 0 8px;
-}
-.footer__thanks{margin:0 0 6px;color:rgba(243,238,225,0.8);font-size:0.9rem;}
-.footer__tag{margin:0;letter-spacing:0.15em;font-size:0.75rem;color:var(--gold);}
 
-/* ================= MOTION SAFETY ================= */
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  .scroll-cue span{animation:none;}
-  .divider path,.divider circle{transition:none;stroke-dashoffset:0;opacity:1;}
-  .gallery__item:hover img{transform:none;}
+    background:#111C17;
+
+    padding:90px 20px;
+
+    text-align:center;
+
 }
+
+.footer h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:3rem;
+
+    font-weight:500;
+
+}
+
+.footer h2 span{
+
+    color:var(--gold);
+
+}
+
+.footer p{
+
+    margin-top:25px;
+
+    color:#BBBBBB;
+
+    line-height:1.8;
+
+}
+
+.footer-love{
+
+    margin-top:40px;
+
+    color:var(--gold);
+
+    letter-spacing:3px;
+
+}
+/* ===========================================================
+   HIỆU ỨNG XUẤT HIỆN KHI SCROLL
+=========================================================== */
+
+.fade-up{
+
+    opacity:0;
+
+    transform:translateY(60px);
+
+    transition:all .8s ease;
+
+}
+
+.fade-up.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+
+/* ===========================================================
+   HIỆU ỨNG CHUNG
+=========================================================== */
+
+.gallery-item,
+.count-card,
+.event-card,
+.gift-card,
+.timeline-content{
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+
+}
+
+
+.gallery-item:hover,
+.count-card:hover,
+.event-card:hover,
+.gift-card:hover,
+.timeline-content:hover{
+
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+
+}
+
+
+
+/* ===========================================================
+   THANH SCROLL
+=========================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#14231C;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--gold);
+
+    border-radius:30px;
+
+}
+
+
+
+/* ===========================================================
+   TEXT CHỌN
+=========================================================== */
+
+::selection{
+
+    background:var(--gold);
+
+    color:var(--green);
+
+}
+
+
+
+/* ===========================================================
+   BUTTON CHUNG
+=========================================================== */
+
+button{
+
+    font-family:'Manrope',sans-serif;
+
+}
+
+
+
+/* ===========================================================
+   RESPONSIVE
+=========================================================== */
+
+@media(max-width:1100px){
+
+    .timeline::before{
+
+        left:35px;
+
+    }
+
+    .timeline-item{
+
+        flex-direction:column !important;
+
+        align-items:flex-start;
+
+        padding-left:90px;
+
+    }
+
+    .timeline-year{
+
+        position:absolute;
+
+        left:0;
+
+        width:70px;
+
+        height:70px;
+
+        font-size:1.3rem;
+
+    }
+
+    .timeline-content{
+
+        width:100%;
+
+    }
+
+    .countdown-wrapper{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .event-wrapper{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .gift-wrapper{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+
+@media(max-width:768px){
+
+    section{
+
+        padding:90px 24px;
+
+    }
+
+    .intro__title{
+
+        font-size:3rem;
+
+    }
+
+    .hero__title{
+
+        font-size:3rem;
+
+    }
+
+    .hero__amp{
+
+        font-size:2.3rem;
+
+    }
+
+    .section-title h2{
+
+        font-size:2.2rem;
+
+    }
+
+    .gallery-grid{
+
+        columns:2 180px;
+
+    }
+
+    .countdown-wrapper{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:18px;
+
+    }
+
+    .count-card{
+
+        padding:30px 15px;
+
+    }
+
+    .count-card span{
+
+        font-size:2.8rem;
+
+    }
+
+}
+
+
+
+@media(max-width:576px){
+
+    .gallery-grid{
+
+        columns:1;
+
+    }
+
+    .countdown-wrapper{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+    .hero__label{
+
+        letter-spacing:4px;
+
+        font-size:.75rem;
+
+    }
+
+    .hero__date{
+
+        letter-spacing:4px;
+
+    }
+
+    .music-button{
+
+        width:50px;
+
+        height:50px;
+
+        right:20px;
+
+        bottom:20px;
+
+    }
+
+    .gift-card img{
+
+        width:180px;
+
+    }
+
+}
+
+
+
+/* ===========================================================
+   KẾT THÚC FILE STYLE.CSS
+=========================================================== */
