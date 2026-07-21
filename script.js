@@ -1,108 +1,253 @@
-// ============ CẤU HÌNH NGÀY CƯỚI ============
-// Đổi ngày giờ tại đây (định dạng: Năm, Tháng-1, Ngày, Giờ, Phút)
-const WEDDING_DATE = new Date(2026, 10, 15, 9, 0, 0);
+/* ============================================================
+   WEBSITE WEDDING V2
+   Author : ChatGPT x Long
+   File   : script.js
+============================================================ */
 
-// ============ HỌA TIẾT HOA NHÀI (dùng cho mọi divider) ============
-const JASMINE_SVG = `
-<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
-  <path d="M5 30 C 60 10, 90 50, 110 30 C 130 10, 160 50, 215 30" />
-  <circle cx="60" cy="19" r="3"></circle>
-  <circle cx="110" cy="30" r="4"></circle>
-  <circle cx="160" cy="19" r="3"></circle>
-</svg>`;
 
-document.querySelectorAll('[data-divider]').forEach(el => {
-  el.innerHTML = JASMINE_SVG;
+/* ============================================================
+   KHAI BÁO CÁC PHẦN TỬ HTML
+============================================================ */
+
+const intro = document.querySelector("#intro");
+
+const openButton = document.querySelector("#openInvitation");
+
+const bgMusic = document.querySelector("#bgMusic");
+
+const musicButton = document.querySelector("#musicToggle");
+
+const musicIcon = musicButton.querySelector("i");
+
+
+
+/* ============================================================
+   BIẾN KIỂM TRA NHẠC ĐANG PHÁT HAY KHÔNG
+============================================================ */
+
+let isPlaying = false;
+
+
+
+/* ============================================================
+   HÀM PHÁT NHẠC
+============================================================ */
+
+function playMusic(){
+
+    bgMusic.play();
+
+    isPlaying = true;
+
+    musicIcon.classList.remove("fa-volume-xmark");
+
+    musicIcon.classList.add("fa-volume-high");
+
+    musicButton.classList.add("playing");
+
+}
+
+
+
+/* ============================================================
+   HÀM DỪNG NHẠC
+============================================================ */
+
+function stopMusic(){
+
+    bgMusic.pause();
+
+    isPlaying = false;
+
+    musicIcon.classList.remove("fa-volume-high");
+
+    musicIcon.classList.add("fa-volume-xmark");
+
+    musicButton.classList.remove("playing");
+
+}
+
+
+
+/* ============================================================
+   MỞ THIỆP
+============================================================ */
+
+openButton.addEventListener("click",()=>{
+
+    intro.style.opacity="0";
+
+    intro.style.visibility="hidden";
+
+    playMusic();
+
+});
+/* ============================================================
+   BẬT / TẮT NHẠC
+============================================================ */
+
+musicButton.addEventListener("click",()=>{
+
+    if(isPlaying){
+
+        stopMusic();
+
+    }else{
+
+        playMusic();
+
+    }
+
+});
+/* ============================================================
+   ĐẾM NGƯỢC ĐẾN NGÀY CƯỚI
+============================================================ */
+
+const weddingDate = new Date("December 12, 2026 11:00:00").getTime();
+
+
+
+function updateCountdown(){
+
+    const now = new Date().getTime();
+
+    const distance = weddingDate - now;
+
+    const days = Math.floor(distance / (1000*60*60*24));
+
+    const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+
+    const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+
+    const seconds = Math.floor((distance%(1000*60))/1000);
+
+
+
+    document.querySelector("#days").innerHTML = days;
+
+    document.querySelector("#hours").innerHTML = hours;
+
+    document.querySelector("#minutes").innerHTML = minutes;
+
+    document.querySelector("#seconds").innerHTML = seconds;
+
+}
+
+
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+/* ============================================================
+   HIỆU ỨNG XUẤT HIỆN KHI CUỘN
+============================================================ */
+
+const fadeElements = document.querySelectorAll(
+
+".count-card,.timeline-item,.event-card,.gallery-item,.gift-card,.rsvp,.footer"
+
+);
+
+
+
+function revealOnScroll(){
+
+    fadeElements.forEach((element)=>{
+
+        const top = element.getBoundingClientRect().top;
+
+        const windowHeight = window.innerHeight;
+
+        if(top < windowHeight - 120){
+
+            element.classList.add("show");
+
+        }
+
+    });
+
+}
+
+
+
+window.addEventListener("scroll",revealOnScroll);
+
+revealOnScroll();
+/* ============================================================
+   LIGHTBOX
+============================================================ */
+
+const galleryImages = document.querySelectorAll(".gallery-item img");
+
+const lightbox = document.querySelector("#lightbox");
+
+const lightboxImg = document.querySelector("#lightbox-img");
+
+const closeLightbox = document.querySelector(".close-lightbox");
+
+
+
+galleryImages.forEach((img)=>{
+
+    img.addEventListener("click",()=>{
+
+        lightbox.classList.add("active");
+
+        lightboxImg.src = img.src;
+
+    });
+
 });
 
-// ============ HIỆU ỨNG "VẼ" DIVIDER KHI CUỘN TỚI ============
-const dividerObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in-view');
+
+
+closeLightbox.addEventListener("click",()=>{
+
+    lightbox.classList.remove("active");
+
+});
+
+
+
+lightbox.addEventListener("click",(e)=>{
+
+    if(e.target===lightbox){
+
+        lightbox.classList.remove("active");
+
     }
-  });
-}, { threshold: 0.4 });
 
-document.querySelectorAll('.divider').forEach(d => dividerObserver.observe(d));
+});
+/* ============================================================
+   SCROLL MƯỢT CHO CÁC LINK #
+============================================================ */
 
-// ============ ĐẾM NGƯỢC ============
-function updateCountdown() {
-  const now = new Date();
-  let diff = WEDDING_DATE - now;
+document.querySelectorAll('a[href^="#"]').forEach((anchor)=>{
 
-  if (diff <= 0) {
-    ['cd-days', 'cd-hours', 'cd-mins', 'cd-secs'].forEach(id => {
-      document.getElementById(id).textContent = '00';
+    anchor.addEventListener("click",(e)=>{
+
+        e.preventDefault();
+
+        const target=document.querySelector(anchor.getAttribute("href"));
+
+        if(target){
+
+            target.scrollIntoView({
+
+                behavior:"smooth"
+
+            });
+
+        }
+
     });
-    return;
-  }
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  diff -= days * (1000 * 60 * 60 * 24);
-  const hours = Math.floor(diff / (1000 * 60 * 60));
-  diff -= hours * (1000 * 60 * 60);
-  const mins = Math.floor(diff / (1000 * 60));
-  diff -= mins * (1000 * 60);
-  const secs = Math.floor(diff / 1000);
+});
 
-  document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-  document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
-  document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
-}
-updateCountdown();
-setInterval(updateCountdown, 1000);
 
-// ============ DOT NAV: ĐÁNH DẤU MỤC ĐANG XEM ============
-const sections = ['hero', 'countdown', 'story', 'event', 'gallery', 'rsvp']
-  .map(id => document.getElementById(id))
-  .filter(Boolean);
-const dots = document.querySelectorAll('.dot');
 
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const idx = sections.indexOf(entry.target);
-      dots.forEach(d => d.classList.remove('active'));
-      if (dots[idx]) dots[idx].classList.add('active');
-    }
-  });
-}, { threshold: 0.5 });
+/* ============================================================
+   WEBSITE ĐÃ KHỞI TẠO
+============================================================ */
 
-sections.forEach(s => navObserver.observe(s));
-
-// ============ RSVP FORM ============
-const rsvpForm = document.getElementById('rsvpForm');
-const rsvpStatus = document.getElementById('rsvpStatus');
-
-if (rsvpForm) {
-  rsvpForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const action = rsvpForm.getAttribute('action');
-
-    // Nếu chưa cấu hình Formspree, chỉ hiển thị thông báo demo
-    if (!action || action.includes('YOUR_FORM_ID')) {
-      rsvpStatus.textContent = 'Đã ghi nhận (demo) — hãy thay ID Formspree của bạn trong index.html để form hoạt động thật.';
-      rsvpForm.reset();
-      return;
-    }
-
-    rsvpStatus.textContent = 'Đang gửi...';
-    try {
-      const res = await fetch(action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(rsvpForm)
-      });
-      if (res.ok) {
-        rsvpStatus.textContent = 'Cảm ơn bạn! Chúng tôi đã nhận được xác nhận.';
-        rsvpForm.reset();
-      } else {
-        rsvpStatus.textContent = 'Có lỗi xảy ra, vui lòng thử lại sau.';
-      }
-    } catch (err) {
-      rsvpStatus.textContent = 'Không thể kết nối. Vui lòng kiểm tra mạng và thử lại.';
-    }
-  });
-}
+console.log("Wedding Website Ready ❤️");
