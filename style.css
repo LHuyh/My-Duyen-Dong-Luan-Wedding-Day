@@ -92,52 +92,151 @@ img{max-width:100%;display:block;}
 
 /* ================= HERO ================= */
 .hero{
-    min-height:75vh;
-    padding:80px 24px;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(185,148,87,0.12), transparent 45%),
-    radial-gradient(circle at 80% 75%, rgba(201,138,130,0.10), transparent 45%),
-    var(--bg-deep);
-  color:var(--cream-text);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  position:relative;
-  padding:24px;
-}
-.hero__inner{max-width:640px;}
-.hero .eyebrow{color:var(--gold-soft);}
-.hero__names{
+
+    min-height:78vh;
+
     display:flex;
-    flex-direction:column;
-    align-items:center;
+
     justify-content:center;
 
-    gap:10px;
+    align-items:center;
+
+    position:relative;
+
+    padding:80px 20px;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    background:
+
+    radial-gradient(circle at top,#27422922,transparent 45%),
+
+    linear-gradient(135deg,#14231A,#203124,#17251C);
+
+}
+
+.hero__content{
+
+    max-width:760px;
+
+    width:100%;
+
+}
+
+.eyebrow{
+
+    color:var(--gold);
+
+    letter-spacing:7px;
+
+    font-size:.85rem;
+
+    margin-bottom:30px;
+
+}
+
+.couple-name{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.name{
 
     font-family:var(--font-display);
-    font-weight:500;
+
+    font-size:clamp(4rem,8vw,6.5rem);
+
     font-style:italic;
 
-    font-size:clamp(3.5rem,9vw,6rem);
+    font-weight:500;
+
+    color:#F5EFE6;
 
     line-height:1;
-    margin:10px 0 25px;
+
 }
-.hero__names .amp{
-  color:var(--gold);
-  font-style:normal;
-  margin:0 18px;
-  font-size:0.7em;
-  vertical-align:2%;
+
+.amp{
+
+    font-size:3rem;
+
+    color:var(--gold);
+
+    font-family:var(--font-display);
+
+    margin:8px 0;
+
 }
-.hero__date{
-  font-family:var(--font-body);
-  letter-spacing:0.35em;
-  font-size:0.95rem;
-  color:var(--gold);
-  margin:0 0 22px;
+
+.hero-date{
+
+    margin-top:35px;
+
+    color:var(--gold);
+
+    letter-spacing:8px;
+
+    font-size:.95rem;
+
+}
+
+.hero-divider{
+
+    width:120px;
+
+    height:1px;
+
+    background:rgba(201,170,103,.5);
+
+    margin:35px auto;
+
+}
+
+.hero-text{
+
+    font-size:1.05rem;
+
+    color:rgba(255,255,255,.88);
+
+    line-height:1.8;
+
+}
+
+.hero-btn{
+
+    display:inline-block;
+
+    margin-top:40px;
+
+    padding:15px 40px;
+
+    border:1px solid var(--gold);
+
+    color:var(--gold);
+
+    text-decoration:none;
+
+    letter-spacing:2px;
+
+    transition:.35s;
+
+}
+
+.hero-btn:hover{
+
+    background:var(--gold);
+
+    color:#132117;
+
 }
 .hero__sub{
   font-size:1rem;
