@@ -92,7 +92,8 @@ img{max-width:100%;display:block;}
 
 /* ================= HERO ================= */
 .hero{
-  min-height:100svh;
+    min-height:75vh;
+    padding:80px 24px;
   background:
     radial-gradient(circle at 20% 20%, rgba(185,148,87,0.12), transparent 45%),
     radial-gradient(circle at 80% 75%, rgba(201,138,130,0.10), transparent 45%),
