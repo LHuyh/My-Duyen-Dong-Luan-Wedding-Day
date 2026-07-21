@@ -29,7 +29,7 @@ img{max-width:100%;display:block;}
   font-family:var(--font-body);
   text-transform:uppercase;
   letter-spacing:0.28em;
-  font-size:80px;
+  font-size: auto;
   color:var(--gold-soft);
   margin:0 0 12px;
   text-align:center;
