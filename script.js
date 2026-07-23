@@ -97,7 +97,6 @@ function openInvitation(playAudio = true){
         playMusic();
 
     }
-
 }
 /* ============================================================
    BẬT / TẮT NHẠC
