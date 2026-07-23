@@ -2193,3 +2193,37 @@ transform:translateX(120%);
 }
 
 }
+.count-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+
+.count-item{
+
+    text-align:center;
+
+}
+
+
+.count-item span{
+
+    display:block;
+
+    font-size:50px;
+
+    font-weight:600;
+
+}
+
+
+.count-item small{
+
+    font-size:16px;
+
+}
