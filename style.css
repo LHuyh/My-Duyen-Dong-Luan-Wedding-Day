@@ -2204,9 +2204,15 @@ transform:translateX(120%);
 }
 
 
-.count-item{
+@media(max-width:768px){
 
-    text-align:center;
+    .count-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:15px;
+
+    }
 
 }
 
@@ -2222,8 +2228,12 @@ transform:translateX(120%);
 }
 
 
-.count-item small{
+@media(max-width:768px){
 
-    font-size:16px;
+    .count-item span{
+
+        font-size:35px;
+
+    }
 
 }
