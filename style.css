@@ -2327,3 +2327,6 @@ transform:translateX(120%);
 
     margin-top:10px;
 }
+   .event-card, .count-item, .gift-card, .timeline-content{
+          text-align: center;
+   }
