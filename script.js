@@ -74,27 +74,24 @@ function stopMusic(){
 
 let invitationOpened = false;
 
-// Hàm mở thiệp
 function openInvitation(playAudio = true){
 
-    // Nếu đã mở rồi thì không mở lại
     if(invitationOpened) return;
 
     invitationOpened = true;
 
     // Hiệu ứng mờ dần
-    intro.style.transition = "opacity 0.8s ease";
+    intro.style.transition = "opacity .8s ease";
 
     intro.style.opacity = "0";
 
-    // Sau khi mờ xong thì bỏ khỏi màn hình
+    // Sau 0.8s xóa hẳn Intro
     setTimeout(() => {
 
-        intro.style.display = "none";
+        intro.remove();
 
-    }, 800);
+    },800);
 
-    // Chỉ phát nhạc khi người dùng bấm nút
     if(playAudio){
 
         playMusic();
@@ -102,24 +99,6 @@ function openInvitation(playAudio = true){
     }
 
 }
-
-// Người dùng bấm nút mở thiệp
-openButton.addEventListener("click", () => {
-
-    openInvitation(true);
-
-});
-
-// Sau 5 giây tự mở thiệp nếu chưa bấm
-setTimeout(() => {
-
-    if(!invitationOpened){
-
-        openInvitation(false);
-
-    }
-
-}, 5000);
 /* ============================================================
    BẬT / TẮT NHẠC
 ============================================================ */
