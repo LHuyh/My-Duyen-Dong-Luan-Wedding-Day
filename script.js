@@ -69,22 +69,50 @@ function stopMusic(){
 
 
 /* ============================================================
-   MỞ THIỆP
+   HÀM MỞ THIỆP
 ============================================================ */
 
-/* ============================================================
-   MỞ THIỆP
-============================================================ */
+let invitationOpened = false;
 
-openButton.addEventListener("click",()=>{
+function openInvitation(playAudio = true){
 
+    // Nếu đã mở thì không chạy nữa
+    if(invitationOpened) return;
+
+    invitationOpened = true;
+
+    // Ẩn Intro
     intro.style.opacity = "0";
-
     intro.style.visibility = "hidden";
 
-    playMusic();
+    // Chỉ phát nhạc khi người dùng bấm
+    if(playAudio){
+        playMusic();
+    }
+
+}
+
+// Người dùng bấm mở thiệp
+openButton.addEventListener("click", () => {
+
+    openInvitation(true);
 
 });
+
+
+/* ============================================================
+   TỰ ĐỘNG MỞ THIỆP SAU 5 GIÂY
+============================================================ */
+
+setTimeout(() => {
+
+    if(!invitationOpened){
+
+        openInvitation(false);
+
+    }
+
+}, 5000);
 });
 /* ============================================================
    BẬT / TẮT NHẠC
