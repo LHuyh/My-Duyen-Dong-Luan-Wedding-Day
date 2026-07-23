@@ -1,4 +1,611 @@
 /* ==========================================================
+   WEDDING WEBSITE V4
+   ANIMATION.CSS
+========================================================== */
+
+
+
+/* ==========================================================
+   KEYFRAME
+   Tiêu đề từ trên rơi xuống
+========================================================== */
+
+@keyframes revealTop{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-80px);
+
+        filter:blur(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+        filter:blur(0);
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   TỪ DƯỚI ĐI LÊN
+========================================================== */
+
+@keyframes revealBottom{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(80px);
+
+        filter:blur(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+        filter:blur(0);
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   TỪ BÊN TRÁI
+========================================================== */
+
+@keyframes revealLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-100px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   TỪ BÊN PHẢI
+========================================================== */
+
+@keyframes revealRight{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(100px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   SCALE
+========================================================== */
+
+@keyframes revealScale{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.5);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+/* ==========================================================
+   CLASS REVEAL
+========================================================== */
+
+.reveal-top{
+
+    opacity:0;
+
+    animation:revealTop 1s forwards;
+
+}
+
+
+
+.reveal-bottom{
+
+    opacity:0;
+
+    animation:revealBottom 1s forwards;
+
+}
+
+
+
+.reveal-left{
+
+    opacity:0;
+
+    animation:revealLeft 1s forwards;
+
+}
+
+
+
+.reveal-right{
+
+    opacity:0;
+
+    animation:revealRight 1s forwards;
+
+}
+
+
+
+.reveal-scale{
+
+    opacity:0;
+
+    animation:revealScale .8s forwards;
+
+}
+
+
+
+/* ==========================================================
+   DELAY
+========================================================== */
+
+.delay-1{
+
+    animation-delay:.2s;
+
+}
+
+
+
+.delay-2{
+
+    animation-delay:.4s;
+
+}
+
+
+
+.delay-3{
+
+    animation-delay:.6s;
+
+}
+
+
+
+.delay-4{
+
+    animation-delay:.8s;
+
+}
+/* ==========================================================
+   HERO TITLE
+========================================================== */
+
+.hero__title span{
+
+    opacity:0;
+
+    animation:revealTop 1.2s forwards;
+
+}
+
+
+
+.hero__title span:nth-child(1){
+
+    animation-delay:.3s;
+
+}
+
+
+
+.hero__title span:nth-child(2){
+
+    animation-delay:.7s;
+
+}
+
+
+
+.hero__title span:nth-child(3){
+
+    animation-delay:1s;
+
+}
+
+
+
+/* ==========================================================
+   HERO SUBTITLE
+========================================================== */
+
+.hero__date{
+
+    opacity:0;
+
+    animation:revealBottom 1s forwards;
+
+    animation-delay:1.3s;
+
+}
+
+
+
+.hero__text{
+
+    opacity:0;
+
+    animation:revealBottom 1s forwards;
+
+    animation-delay:1.6s;
+
+}
+/* ==========================================================
+   NÚT MỞ THIỆP
+========================================================== */
+
+.intro__button{
+
+    animation:pulseButton 2.8s infinite;
+
+}
+
+
+
+@keyframes pulseButton{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   GLOW
+========================================================== */
+
+@keyframes glowFloat{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-40px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+/* ==========================================================
+   HẠT BỤI
+========================================================== */
+
+@keyframes floatParticle{
+
+    0%{
+
+        transform:translateY(0);
+
+        opacity:0;
+
+    }
+
+    30%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:translateY(-300px);
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   SCROLL
+========================================================== */
+
+@keyframes mouseScroll{
+
+    0%{
+
+        top:8px;
+
+        opacity:0;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        top:24px;
+
+        opacity:0;
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   DUST MOVE
+========================================================== */
+
+@keyframes dustMove{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(-300px);
+
+    }
+
+}
+/* ==========================================================
+   LÁ OLIVE
+========================================================== */
+
+@keyframes leafLeft{
+
+    0%{
+
+        transform:rotate(-2deg);
+
+    }
+
+    50%{
+
+        transform:rotate(3deg);
+
+    }
+
+    100%{
+
+        transform:rotate(-2deg);
+
+    }
+
+}
+
+
+
+@keyframes leafRight{
+
+    0%{
+
+        transform:rotate(2deg);
+
+    }
+
+    50%{
+
+        transform:rotate(-3deg);
+
+    }
+
+    100%{
+
+        transform:rotate(2deg);
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   ĐƯỜNG VÀNG
+========================================================== */
+
+@keyframes dividerRun{
+
+    from{
+
+        left:-120%;
+
+    }
+
+    to{
+
+        left:120%;
+
+    }
+
+}
+/* ==========================================================
+   CÁNH HOA RƠI
+========================================================== */
+
+@keyframes petalFall{
+
+    0%{
+
+        transform:
+
+        translateY(-100px)
+
+        rotate(0deg);
+
+        opacity:0;
+
+    }
+
+    10%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+
+        translateY(120vh)
+
+        translateX(120px)
+
+        rotate(540deg);
+
+        opacity:0;
+
+    }
+
+}
+/* ==========================================================
+   LOADER RING
+========================================================== */
+
+.loader-ring{
+
+    width:80px;
+
+    height:80px;
+
+    border-radius:50%;
+
+    border:3px solid #E8DDCC;
+
+    border-top:3px solid #C9A56B;
+
+    animation:loadingSpin 1s linear infinite;
+
+}
+
+@keyframes loadingSpin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+/* ==========================================================
+   HERO GLOW
+========================================================== */
+
+@keyframes heroGlow{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.15);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+/* ==========================================================
    BỔ SUNG CLASS CÒN THIẾU
    (dán đoạn này vào CUỐI file animation.css)
    Lý do: HTML có dùng reveal-title, reveal-up, reveal-width
