@@ -3,59 +3,152 @@
 
 <head>
 
-    <!-- =====================================================
-         THÔNG TIN CƠ BẢN CỦA WEBSITE
-    ====================================================== -->
+    <!-- =======================================================
+         THÔNG TIN WEBSITE
+    ======================================================== -->
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Tiêu đề hiển thị trên tab trình duyệt -->
-    <title>Dỏng Luân & Dạ Mỹ Duyên | Wedding Invitation</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <!-- Mô tả khi chia sẻ website -->
+    <title>Wedding Invitation | Đỏng Luân & Dạ Mỹ Duyên</title>
+
     <meta name="description"
-        content="Wedding Invitation - Đông Luân & Dạ Mỹ Duyên">
+          content="Wedding Invitation">
 
-    <!-- =====================================================
+    <!-- =======================================================
          FONT GOOGLE
-    ====================================================== -->
+         Cormorant Garamond : Tiêu đề Luxury
+         Manrope            : Nội dung
+    ======================================================== -->
 
-    <!-- Font tiêu đề -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
     <link rel="preconnect"
           href="https://fonts.gstatic.com"
           crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
 
-    <!-- Font Awesome -->
+    <!-- =======================================================
+         ICON
+    ======================================================== -->
+
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <!-- =======================================================
+         CSS
+    ======================================================== -->
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <link rel="stylesheet"
+          href="css/animation.css">
+
+    <link rel="stylesheet"
+          href="css/responsive.css">
 
 </head>
 
 <body>
+    <div class="mouse-light"></div>
+    <div class="cursor"></div>
+    <div id="progressBar"></div>
 
+<!-- ==========================================
+     CÁNH HOA
+========================================== -->
 
+<div class="petals"></div>
+<!-- ==========================================
+     WEBSITE LOADER
+========================================== -->
 
-<!-- =====================================================
+<div id="loader">
+
+    <div class="loader-content">
+
+        <div class="loader-ring"></div>
+
+        <h2>
+
+            Đỏng Luân
+
+            <span>&</span>
+
+            Dạ Mỹ Duyên
+
+        </h2>
+
+        <p>
+
+            Wedding Invitation
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- =======================================================
      INTRO
-     Màn hình mở đầu trước khi vào website
+     Màn hình mở đầu
+======================================================= -->
+<!-- =====================================================
+     FLOATING NAVBAR
 ===================================================== -->
 
-<div id="intro" class="intro">
+<nav class="floating-nav">
+
+    <a href="#hero">
+        <i class="fa-solid fa-house"></i>
+    </a>
+
+    <a href="#story">
+        <i class="fa-solid fa-heart"></i>
+    </a>
+
+    <a href="#event">
+        <i class="fa-solid fa-calendar"></i>
+    </a>
+
+    <a href="#gallery">
+        <i class="fa-solid fa-image"></i>
+    </a>
+
+    <a href="#gift">
+        <i class="fa-solid fa-gift"></i>
+    </a>
+
+</nav>
+
+<section id="intro"
+         class="intro">
+
+    <!-- Background làm mờ -->
 
     <div class="intro__overlay"></div>
 
+    <!-- Vòng sáng -->
+
+    <div class="intro__glow"></div>
+
+    <!-- Hạt bụi -->
+
+    <div class="dust dust1"></div>
+    <div class="dust dust2"></div>
+    <div class="dust dust3"></div>
+
+    <!-- Nội dung -->
+
     <div class="intro__content">
 
-        <p class="intro__label">
+        <p class="intro__sub">
 
             Wedding Invitation
 
@@ -63,105 +156,136 @@
 
         <h1 class="intro__title">
 
-            Dỏng Luân
+            <span>Đỏng Luân</span>
 
-            <span>&</span>
+            <span class="and">&</span>
 
-            Dạ Mỹ Duyên
+            <span>Dạ Mỹ Duyên</span>
 
         </h1>
 
         <p class="intro__quote">
 
-            "Mỗi câu chuyện tình yêu đều đẹp,
-            nhưng câu chuyện của chúng tôi
-            là điều đặc biệt nhất."
+            "Tình yêu không phải là tìm được người hoàn hảo,
+            mà là cùng nhau tạo nên những khoảnh khắc hoàn hảo."
 
         </p>
+
+        <!-- Nút mở -->
 
         <button id="openInvitation"
                 class="intro__button">
 
-            MỞ THIỆP
+            <span>MỞ THIỆP</span>
+
+            <i class="fa-solid fa-envelope-open"></i>
 
         </button>
 
     </div>
 
-</div>
+</section>
 
 
 
-<!-- =====================================================
-     NHẠC NỀN
-===================================================== -->
+<!-- =======================================================
+     NHẠC
+======================================================= -->
 
-<audio
-       id="bgMusic"
+<audio id="bgMusic"
        loop>
 
-    <source
-        src="Beautiful In White.mp3"
-        type="audio/mpeg">
+    <source src="music/wedding.mp3"
+            type="audio/mpeg">
 
 </audio>
 
 
 
-<!-- =====================================================
-     NÚT BẬT / TẮT NHẠC
-===================================================== -->
+<!-- =======================================================
+     NÚT NHẠC
+======================================================= -->
 
-<button
-        id="musicToggle"
-        class="music-button">
+<button id="musicToggle"
+        class="music">
 
     <i class="fa-solid fa-volume-high"></i>
 
 </button>
-
-
-
-<!-- =====================================================
+<!-- =======================================================
      HERO
-===================================================== -->
+     Màn hình chính sau khi mở thiệp
+======================================================= -->
 
-<header id="hero"
-        class="hero">
+<header class="hero">
 
-    <!-- Overlay màu xanh rêu -->
-    <div class="hero__overlay"></div>
+    <!-- ===================================================
+         Background Luxury
+    ==================================================== -->
 
-    <!-- Ảnh nền -->
-    <img
-        src="images/hero.jpg"
-        alt="Wedding"
-        class="hero__background">
+    <div class="hero__bg">
 
-    <!-- Nội dung -->
+        <!-- Texture giấy -->
+
+        <div class="paper-texture"></div>
+
+        <!-- Vòng sáng -->
+
+        <div class="hero-light light-1"></div>
+
+        <div class="hero-light light-2"></div>
+
+        <!-- Lá Olive -->
+
+        <img src="images/element/olive-left.png"
+             class="leaf leaf-left"
+             loading="lazy"
+             alt="">
+
+        <img src="images/element/olive-right.png"
+             class="leaf leaf-right"
+             loading="lazy"
+             alt="">
+
+        <!-- Hạt bụi -->
+
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
+        <span class="particle p5"></span>
+        <span class="particle p6"></span>
+
+    </div>
+
+
+    <!-- ===================================================
+         Nội dung Hero
+    ==================================================== -->
+
     <div class="hero__content">
 
-        <p class="hero__label">
+        <p class="hero__eyebrow reveal-top">
 
-            TRÂN TRỌNG KÍNH MỜI
+            WE ARE GETTING MARRIED
 
         </p>
 
         <h1 class="hero__title">
 
-            <span>
+            <span class="title-line reveal-title">
 
-                Dỏng Luân
+                Đỏng Luân
 
             </span>
 
-            <span class="hero__amp">
+            <span class="hero__and reveal-scale">
 
                 &
 
             </span>
 
-            <span>
+            <span class="title-line reveal-title delay-2">
 
                 Dạ Mỹ Duyên
 
@@ -169,77 +293,103 @@
 
         </h1>
 
-        <p class="hero__date">
+        <div class="hero-divider reveal-width"></div>
+
+        <p class="hero__date reveal-bottom">
 
             12 • 12 • 2026
 
         </p>
 
-        <div class="hero__line"></div>
+        <p class="hero__text reveal-bottom delay-3">
 
-        <p class="hero__text">
-
-            Chúng tôi sẽ nên duyên vợ chồng
-
-            <br>
-
-            và rất mong được đón tiếp bạn
-            trong ngày hạnh phúc nhất.
+            Chúng mình rất hạnh phúc khi có bạn
+            trong ngày trọng đại nhất của cuộc đời.
 
         </p>
 
-        <a href="#countdown"
-           class="hero__button">      
-            KHÁM PHÁ THIỆP
-        </a>
-
     </div>
+
+
+    <!-- ===================================================
+         Scroll xuống
+    ==================================================== -->
+
+    <a href="#countdown"
+       class="scroll-down">
+
+        <span></span>
+
+    </a>
 
 </header>
-<!-- =====================================================
+
+
+
+<!-- =======================================================
      COUNTDOWN
-     Đếm ngược đến ngày cưới
-===================================================== -->
+======================================================= -->
 
-<section id="countdown" class="countdown">
+<section id="countdown"
+         class="countdown section">
 
-    <div class="section-title">
+    <p class="section-label reveal-top">
 
-        <p>Save The Date</p>
+        SAVE THE DATE
 
-        <h2>Đếm Ngược Đến Ngày Cưới</h2>
+    </p>
 
-    </div>
+    <h2 class="section-title reveal-title">
 
-    <div class="countdown-wrapper">
+        Đếm Ngược Đến Ngày Cưới
 
-        <div class="count-card">
+    </h2>
 
-            <span id="days">00</span>
+    <div class="count-grid">
+
+        <div class="count-item reveal-up">
+
+            <span id="days">
+
+                00
+
+            </span>
 
             <small>Ngày</small>
 
         </div>
 
-        <div class="count-card">
+        <div class="count-item reveal-up delay-1">
 
-            <span id="hours">00</span>
+            <span id="hours">
+
+                00
+
+            </span>
 
             <small>Giờ</small>
 
         </div>
 
-        <div class="count-card">
+        <div class="count-item reveal-up delay-2">
 
-            <span id="minutes">00</span>
+            <span id="minutes">
+
+                00
+
+            </span>
 
             <small>Phút</small>
 
         </div>
 
-        <div class="count-card">
+        <div class="count-item reveal-up delay-3">
 
-            <span id="seconds">00</span>
+            <span id="seconds">
+
+                00
+
+            </span>
 
             <small>Giây</small>
 
@@ -248,43 +398,46 @@
     </div>
 
 </section>
-
-
-
-<!-- =====================================================
+<!-- =======================================================
      LOVE STORY
-===================================================== -->
+     Câu chuyện của chúng mình
+======================================================= -->
 
-<section id="story" class="story">
+<section class="story section">
 
-    <div class="section-title">
+    <p class="section-label reveal-top">
+        OUR LOVE STORY
+    </p>
 
-        <p>Our Love Story</p>
+    <h2 class="section-title reveal-title">
+        Hành Trình Yêu Thương
+    </h2>
 
-        <h2>Chuyện Tình Của Chúng Tôi</h2>
+    <div class="story-timeline">
 
-    </div>
+        <div class="timeline-item reveal-left">
 
-    <div class="timeline">
-
-        <!-- Mốc thời gian số 1 -->
-
-        <div class="timeline-item">
-
-            <div class="timeline-year">
-
-                2019
-
-            </div>
+            <div class="timeline-dot"></div>
 
             <div class="timeline-content">
 
-                <h3>Lần đầu gặp nhau</h3>
+                <span class="timeline-year">
+
+                    2020
+
+                </span>
+
+                <h3>
+
+                    Lần Đầu Gặp Gỡ
+
+                </h3>
 
                 <p>
 
-                    Một cuộc gặp gỡ tưởng chừng như bình thường,
-                    nhưng lại là khởi đầu cho hành trình yêu thương.
+                    Một cuộc gặp gỡ tưởng chừng như tình cờ,
+                    nhưng lại là khởi đầu cho câu chuyện
+                    đẹp nhất của chúng mình.
 
                 </p>
 
@@ -294,25 +447,29 @@
 
 
 
-        <!-- Mốc thời gian số 2 -->
+        <div class="timeline-item reveal-right">
 
-        <div class="timeline-item">
-
-            <div class="timeline-year">
-
-                2021
-
-            </div>
+            <div class="timeline-dot"></div>
 
             <div class="timeline-content">
 
-                <h3>Chính thức yêu nhau</h3>
+                <span class="timeline-year">
+
+                    2022
+
+                </span>
+
+                <h3>
+
+                    Đồng Hành
+
+                </h3>
 
                 <p>
 
-                    Sau những tháng ngày đồng hành,
-                    chúng mình quyết định cùng nhau viết tiếp
-                    câu chuyện tình yêu.
+                    Cùng nhau trưởng thành,
+                    cùng nhau vượt qua mọi khó khăn
+                    để hiểu rằng đây chính là người mình muốn đi cùng.
 
                 </p>
 
@@ -322,52 +479,28 @@
 
 
 
-        <!-- Mốc thời gian số 3 -->
+        <div class="timeline-item reveal-left">
 
-        <div class="timeline-item">
-
-            <div class="timeline-year">
-
-                2025
-
-            </div>
+            <div class="timeline-dot"></div>
 
             <div class="timeline-content">
 
-                <h3>Lời cầu hôn</h3>
+                <span class="timeline-year">
+
+                    2026
+
+                </span>
+
+                <h3>
+
+                    Ngày Chung Đôi
+
+                </h3>
 
                 <p>
 
-                    Một lời đồng ý,
-                    mở ra chương mới của cuộc đời.
-
-                </p>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- Mốc thời gian số 4 -->
-
-        <div class="timeline-item">
-
-            <div class="timeline-year">
-
-                2026
-
-            </div>
-
-            <div class="timeline-content">
-
-                <h3>Ngày Hạnh Phúc</h3>
-
-                <p>
-
-                    Và giờ đây...
-                    Chúng mình chính thức trở thành
-                    vợ chồng.
+                    Sau hành trình nhiều kỷ niệm,
+                    chúng mình quyết định về chung một nhà.
 
                 </p>
 
@@ -381,260 +514,381 @@
 
 
 
-<!-- =====================================================
-     THÔNG TIN HÔN LỄ
-===================================================== -->
+<!-- =======================================================
+     THÔNG TIN LỄ CƯỚI
+======================================================= -->
 
-<section id="event" class="event">
+<section class="event section">
 
-    <div class="section-title">
+    <p class="section-label reveal-top">
 
-        <p>Wedding Event</p>
-
-        <h2>Thông Tin Hôn Lễ</h2>
-
-    </div>
-
-    <div class="event-wrapper">
-
-        <!-- Lễ thành hôn -->
-
-        <div class="event-card">
-
-            <i class="fa-solid fa-church"></i>
-
-            <h3>Lễ Thành Hôn</h3>
-
-            <p>
-
-                09:00 - 12/12/2026
-
-            </p>
-
-            <p>
-
-                Tư gia nhà gái
-
-            </p>
-
-            <a href="#">
-
-                Xem bản đồ
-
-            </a>
-
-        </div>
-
-
-
-        <!-- Tiệc cưới -->
-
-        <div class="event-card">
-
-            <i class="fa-solid fa-champagne-glasses"></i>
-
-            <h3>Tiệc Cưới</h3>
-
-            <p>
-
-                18:00 - 12/12/2026
-
-            </p>
-
-            <p>
-
-                Trung tâm Hội nghị ABC
-
-            </p>
-
-            <a href="#">
-
-                Xem bản đồ
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-<!-- =====================================================
-     GALLERY
-     Album ảnh cưới
-===================================================== -->
-
-<section id="gallery" class="gallery">
-
-    <div class="section-title">
-
-        <p>Wedding Gallery</p>
-
-        <h2>Khoảnh Khắc Của Chúng Tôi</h2>
-
-    </div>
-
-    <div class="gallery-grid">
-
-        <!-- Ảnh số 1 -->
-        <div class="gallery-item">
-            <img src="images/gallery/1.jpg" alt="">
-        </div>
-
-        <!-- Ảnh số 2 -->
-        <div class="gallery-item">
-            <img src="images/gallery/2.jpg" alt="">
-        </div>
-
-        <!-- Ảnh số 3 -->
-        <div class="gallery-item">
-            <img src="images/gallery/3.jpg" alt="">
-        </div>
-
-        <!-- Ảnh số 4 -->
-        <div class="gallery-item">
-            <img src="images/gallery/4.jpg" alt="">
-        </div>
-
-        <!-- Ảnh số 5 -->
-        <div class="gallery-item">
-            <img src="images/gallery/5.jpg" alt="">
-        </div>
-
-        <!-- Ảnh số 6 -->
-        <div class="gallery-item">
-            <img src="images/gallery/6.jpg" alt="">
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     QUÀ MỪNG CƯỚI
-===================================================== -->
-
-<section id="gift" class="gift">
-
-    <div class="section-title">
-
-        <p>Wedding Gift</p>
-
-        <h2>Mừng Cưới</h2>
-
-    </div>
-
-    <div class="gift-wrapper">
-
-        <!-- QR Chú rể -->
-
-        <div class="gift-card">
-
-            <h3>Chú Rể</h3>
-
-            <img src="images/qr-groom.png" alt="QR Chú Rể">
-
-            <p>
-
-                Dỏng Luân
-
-            </p>
-
-            <small>
-
-                Vietcombank
-
-            </small>
-
-        </div>
-
-
-
-        <!-- QR Cô dâu -->
-
-        <div class="gift-card">
-
-            <h3>Cô Dâu</h3>
-
-            <img src="images/qr-bride.png" alt="QR Cô Dâu">
-
-            <p>
-
-                Dạ Mỹ Duyên
-
-            </p>
-
-            <small>
-
-                MB Bank
-
-            </small>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     RSVP
-===================================================== -->
-
-<section id="rsvp" class="rsvp">
-
-    <div class="section-title">
-
-        <p>Wedding</p>
-
-        <h2>Xác Nhận Tham Dự</h2>
-
-    </div>
-
-    <p class="rsvp-text">
-
-        Sự hiện diện của bạn là niềm hạnh phúc
-        và vinh dự đối với chúng tôi.
+        WEDDING EVENT
 
     </p>
 
-    <a href="#"
-       class="rsvp-button">
+    <h2 class="section-title reveal-title">
 
-        XÁC NHẬN THAM DỰ
+        Thông Tin Buổi Lễ
 
-    </a>
+    </h2>
+
+    <div class="event-grid">
+
+        <!-- Nhà trai -->
+
+        <div class="event-card reveal-left">
+
+            <i class="fa-solid fa-church"></i>
+
+            <h3>
+
+                Tiệc Nhà Trai
+
+            </h3>
+
+            <p>
+
+                11:00 AM
+
+            </p>
+
+            <p>
+
+                12 / 12 / 2026
+
+            </p>
+
+            <p>
+
+                Địa chỉ sẽ cập nhật sau
+
+            </p>
+
+        </div>
+
+
+
+        <!-- Nhà gái -->
+
+        <div class="event-card reveal-right">
+
+            <i class="fa-solid fa-heart"></i>
+
+            <h3>
+
+                Tiệc Nhà Gái
+
+            </h3>
+
+            <p>
+
+                17:00 PM
+
+            </p>
+
+            <p>
+
+                12 / 12 / 2026
+
+            </p>
+
+            <p>
+
+                Địa chỉ sẽ cập nhật sau
+
+            </p>
+
+        </div>
+
+    </div>
 
 </section>
 
 
 
-<!-- =====================================================
+<!-- =======================================================
+     GOOGLE MAP
+======================================================= -->
+
+<section class="map section">
+
+    <p class="section-label reveal-top">
+
+        LOCATION
+
+    </p>
+
+    <h2 class="section-title reveal-title">
+
+        Địa Điểm Tổ Chức
+
+    </h2>
+
+    <!-- Sau này chỉ cần thay iframe Google Maps -->
+
+    <div class="map-box reveal-bottom">
+
+        Google Maps sẽ được cập nhật
+
+    </div>
+
+</section>
+<!-- =======================================================
+     GALLERY
+     Thư viện ảnh cưới
+======================================================= -->
+
+<section id="gallery"
+         class="gallery section">
+
+    <p class="section-label reveal-top">
+
+        OUR MEMORIES
+
+    </p>
+
+    <h2 class="section-title reveal-title">
+
+        Khoảnh Khắc Yêu Thương
+
+    </h2>
+
+    <p class="section-desc reveal-bottom">
+
+        Mỗi bức ảnh là một kỷ niệm.
+        Cảm ơn vì đã đồng hành cùng chúng mình.
+
+    </p>
+
+    <div class="gallery-grid">
+
+        <!-- Ảnh 1 -->
+
+        <div class="gallery-item reveal-up">
+
+            <img
+                src="images/gallery/1.jpg"
+                data-src="images/gallery/1.jpg"
+                loading="lazy"
+                alt="Wedding Photo">
+
+            <div class="gallery-overlay">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+        <!-- Ảnh 2 -->
+
+        <div class="gallery-item reveal-up delay-1">
+
+            <img
+                src="images/gallery/2.jpg"
+                data-src="images/gallery/2.jpg"
+                loading="lazy"
+                alt="Wedding Photo">
+
+            <div class="gallery-overlay">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+        <!-- Ảnh 3 -->
+
+        <div class="gallery-item reveal-up delay-2">
+
+            <img
+                src="images/gallery/3.jpg"
+                data-src="images/gallery/3.jpg"
+                loading="lazy"
+                alt="Wedding Photo">
+
+            <div class="gallery-overlay">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+        <!-- Ảnh 4 -->
+
+        <div class="gallery-item reveal-up">
+
+            <img
+                src="images/gallery/4.jpg"
+                data-src="images/gallery/4.jpg"
+                loading="lazy"
+                alt="Wedding Photo">
+
+            <div class="gallery-overlay">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+        <!-- Ảnh 5 -->
+
+        <div class="gallery-item reveal-up delay-1">
+
+            <img
+                src="images/gallery/5.jpg"
+                data-src="images/gallery/5.jpg"
+                loading="lazy"
+                alt="Wedding Photo">
+
+            <div class="gallery-overlay">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+        <!-- Ảnh 6 -->
+
+        <div class="gallery-item reveal-up delay-2">
+
+            <img
+                src="images/gallery/6.jpg"
+                data-src="images/gallery/6.jpg"
+                loading="lazy"
+                alt="Wedding Photo">
+
+            <div class="gallery-overlay">
+
+                <i class="fa-solid fa-expand"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     QR MỪNG CƯỚI
+======================================================= -->
+
+<section class="gift section">
+
+    <p class="section-label reveal-top">
+
+        SEND YOUR LOVE
+
+    </p>
+
+    <h2 class="section-title reveal-title">
+
+        Mừng Cưới
+
+    </h2>
+
+    <p class="section-desc">
+
+        Nếu không thể đến tham dự,
+        bạn có thể gửi lời chúc đến chúng mình.
+
+    </p>
+
+    <div class="gift-grid">
+
+        <div class="gift-card reveal-left">
+
+            <img src="images/qr-groom.png"
+                 loading="lazy"
+                 alt="QR Groom">
+
+            <h3>
+
+                Chú Rể
+
+            </h3>
+
+            <p>
+
+                QR sẽ cập nhật sau
+
+            </p>
+
+        </div>
+
+        <div class="gift-card reveal-right">
+
+            <img src="images/qr-bride.png"
+                 loading="lazy"
+                 alt="QR Bride">
+
+            <h3>
+
+                Cô Dâu
+
+            </h3>
+
+            <p>
+
+                QR sẽ cập nhật sau
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =======================================================
+     LỜI CẢM ƠN
+======================================================= -->
+
+<section class="thanks section">
+
+    <h2 class="section-title reveal-title">
+
+        Thank You
+
+    </h2>
+
+    <p class="thanks-text reveal-bottom">
+
+        Sự hiện diện của bạn
+        là món quà quý giá nhất
+        dành cho chúng mình.
+
+    </p>
+
+</section>
+
+
+
+<!-- =======================================================
      FOOTER
-===================================================== -->
+======================================================= -->
 
 <footer class="footer">
 
     <h2>
 
-        Đông Luân
+        Đỏng Luân
+
         <span>&</span>
+
         Dạ Mỹ Duyên
 
     </h2>
 
     <p>
 
-        Cảm ơn bạn đã dành thời gian
-        ghé thăm website cưới của chúng tôi.
-
-    </p>
-
-    <p class="footer-love">
-
-        Made with ❤️ for our Wedding Day
+        Made with ❤️
 
     </p>
 
@@ -642,12 +896,23 @@
 
 
 
-<!-- =====================================================
-     LIGHTBOX
-     Khi bấm ảnh sẽ mở toàn màn hình
-===================================================== -->
+<!-- =======================================================
+     NÚT LÊN ĐẦU TRANG
+======================================================= -->
 
-<div id="lightbox" class="lightbox">
+<button id="backToTop">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+
+
+<!-- =======================================================
+     LIGHTBOX
+======================================================= -->
+
+<div id="lightbox">
 
     <span class="close-lightbox">
 
@@ -655,20 +920,23 @@
 
     </span>
 
-    <img
-        id="lightbox-img"
-        src=""
-        alt="">
+    <img id="lightbox-img"
+         src=""
+         alt="">
 
 </div>
 
 
 
-<!-- =====================================================
+<!-- =======================================================
      JAVASCRIPT
-===================================================== -->
+======================================================= -->
 
-<script src="script.js"></script>
+<script src="js/script.js"></script>
+
+<script src="js/gallery.js"></script>
+
+<script src="js/animation.js"></script>
 
 </body>
 
