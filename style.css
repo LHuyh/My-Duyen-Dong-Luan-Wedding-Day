@@ -2269,3 +2269,61 @@ transform:translateX(120%);
     letter-spacing:1px;
 
 }
+   .count-grid{
+    display:grid !important;
+    grid-template-columns:repeat(4,1fr) !important;
+    gap:20px;
+}
+
+
+.count-item{
+    height:120px !important;
+
+    background:linear-gradient(
+        135deg,
+        #d4af37,
+        #f6df9b
+    ) !important;
+
+    border-radius:24px !important;
+
+    display:flex !important;
+    flex-direction:column !important;
+
+    justify-content:center !important;
+    align-items:center !important;
+
+    text-align:center !important;
+
+    position:relative;
+}
+
+
+.count-item span{
+    display:block !important;
+
+    width:100%;
+
+    text-align:center !important;
+
+    font-size:55px !important;
+
+    line-height:1 !important;
+
+    color:white !important;
+
+    margin:0 !important;
+}
+
+
+.count-item small{
+    display:block !important;
+
+    width:100%;
+
+    text-align:center !important;
+
+    color:white !important;
+
+    margin-top:10px;
+}
