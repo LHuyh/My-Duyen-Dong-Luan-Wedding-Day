@@ -1,78 +1,108 @@
 /* ============================================================
-   WEBSITE WEDDING V2
+   WEBSITE WEDDING V3
    Author : ChatGPT x Long
    File   : script.js
+   Phiên bản viết lại hoàn toàn
 ============================================================ */
 
 
 /* ============================================================
-   KHAI BÁO CÁC PHẦN TỬ HTML
+   LẤY CÁC PHẦN TỬ HTML
 ============================================================ */
 
-const intro = document.querySelector("#intro");
+const intro = document.getElementById("intro");
 
-const openButton = document.querySelector("#openInvitation");
+const openButton = document.getElementById("openInvitation");
 
-const bgMusic = document.querySelector("#bgMusic");
+const bgMusic = document.getElementById("bgMusic");
 
-const musicButton = document.querySelector("#musicToggle");
+const musicButton = document.getElementById("musicToggle");
 
-const musicIcon = musicButton.querySelector("i");
+const musicIcon = musicButton
+    ? musicButton.querySelector("i")
+    : null;
 
 
 
 /* ============================================================
-   BIẾN KIỂM TRA NHẠC ĐANG PHÁT HAY KHÔNG
+   BIẾN TRẠNG THÁI
 ============================================================ */
 
+// Đã mở thiệp chưa
+let invitationOpened = false;
+
+// Nhạc đang phát?
 let isPlaying = false;
 
 
+
 /* ============================================================
-   HÀM PHÁT NHẠC
+   PHÁT NHẠC
 ============================================================ */
 
 function playMusic(){
 
-    bgMusic.play();
+    if(!bgMusic) return;
+
+    bgMusic.play().catch(()=>{
+
+        console.log("Trình duyệt chặn Auto Play.");
+
+    });
 
     isPlaying = true;
 
-    musicIcon.classList.remove("fa-volume-xmark");
+    if(musicIcon){
 
-    musicIcon.classList.add("fa-volume-high");
+        musicIcon.classList.remove("fa-volume-xmark");
 
-    musicButton.classList.add("playing");
+        musicIcon.classList.add("fa-volume-high");
+
+    }
+
+    if(musicButton){
+
+        musicButton.classList.add("playing");
+
+    }
 
 }
 
 
 
 /* ============================================================
-   HÀM DỪNG NHẠC
+   DỪNG NHẠC
 ============================================================ */
 
 function stopMusic(){
+
+    if(!bgMusic) return;
 
     bgMusic.pause();
 
     isPlaying = false;
 
-    musicIcon.classList.remove("fa-volume-high");
+    if(musicIcon){
 
-    musicIcon.classList.add("fa-volume-xmark");
+        musicIcon.classList.remove("fa-volume-high");
 
-    musicButton.classList.remove("playing");
+        musicIcon.classList.add("fa-volume-xmark");
+
+    }
+
+    if(musicButton){
+
+        musicButton.classList.remove("playing");
+
+    }
 
 }
 
 
 
 /* ============================================================
-   HÀM MỞ THIỆP
+   MỞ THIỆP
 ============================================================ */
-
-let invitationOpened = false;
 
 function openInvitation(playAudio = true){
 
@@ -80,48 +110,96 @@ function openInvitation(playAudio = true){
 
     invitationOpened = true;
 
-    // Hiệu ứng mờ dần
-    intro.style.transition = "opacity .8s ease";
+    if(intro){
 
-    intro.style.opacity = "0";
+        intro.style.transition = "opacity .8s ease";
 
-    // Sau 0.8s xóa hẳn Intro
-    setTimeout(() => {
+        intro.style.opacity = "0";
 
-        intro.remove();
+        setTimeout(()=>{
 
-    },800);
+            intro.style.display = "none";
 
+        },800);
+
+    }
+
+    // Chỉ phát nhạc khi click
     if(playAudio){
 
         playMusic();
 
     }
+
 }
+
+
+
+/* ============================================================
+   CLICK MỞ THIỆP
+============================================================ */
+
+if(openButton){
+
+    openButton.addEventListener("click",()=>{
+
+        openInvitation(true);
+
+    });
+
+}
+
+
+
+/* ============================================================
+   SAU 5 GIÂY TỰ MỞ THIỆP
+============================================================ */
+
+setTimeout(()=>{
+
+    if(!invitationOpened){
+
+        openInvitation(false);
+
+    }
+
+},5000);
+
+
+
 /* ============================================================
    BẬT / TẮT NHẠC
 ============================================================ */
 
-musicButton.addEventListener("click",()=>{
+if(musicButton){
 
-    if(isPlaying){
+    musicButton.addEventListener("click",()=>{
 
-        stopMusic();
+        if(isPlaying){
 
-    }else{
+            stopMusic();
 
-        playMusic();
+        }else{
 
-    }
+            playMusic();
 
-});
+        }
+
+    });
+
+} 
 /* ============================================================
    ĐẾM NGƯỢC ĐẾN NGÀY CƯỚI
 ============================================================ */
 
+// Thời gian lễ cưới
 const weddingDate = new Date("December 12, 2026 11:00:00").getTime();
 
 
+
+/* ============================================================
+   CẬP NHẬT COUNTDOWN
+============================================================ */
 
 function updateCountdown(){
 
@@ -129,38 +207,83 @@ function updateCountdown(){
 
     const distance = weddingDate - now;
 
-    const days = Math.floor(distance / (1000*60*60*24));
+    // Nếu ngày cưới đã đến
+    if(distance <= 0){
 
-    const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
 
-    const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+        return;
 
-    const seconds = Math.floor((distance%(1000*60))/1000);
+    }
 
+    // Tính ngày
+    const days = Math.floor(
+        distance / (1000 * 60 * 60 * 24)
+    );
 
+    // Tính giờ
+    const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
 
-    document.querySelector("#days").innerHTML = days;
+    // Tính phút
+    const minutes = Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
 
-    document.querySelector("#hours").innerHTML = hours;
+    // Tính giây
+    const seconds = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+    );
 
-    document.querySelector("#minutes").innerHTML = minutes;
+    // Đổ dữ liệu lên giao diện
+    const dayBox = document.getElementById("days");
+    const hourBox = document.getElementById("hours");
+    const minuteBox = document.getElementById("minutes");
+    const secondBox = document.getElementById("seconds");
 
-    document.querySelector("#seconds").innerHTML = seconds;
+    if(dayBox) dayBox.textContent = String(days).padStart(2,"0");
+
+    if(hourBox) hourBox.textContent = String(hours).padStart(2,"0");
+
+    if(minuteBox) minuteBox.textContent = String(minutes).padStart(2,"0");
+
+    if(secondBox) secondBox.textContent = String(seconds).padStart(2,"0");
 
 }
 
 
 
+// Chạy lần đầu
 updateCountdown();
 
+// Cập nhật mỗi giây
 setInterval(updateCountdown,1000);
+
+
+
 /* ============================================================
-   HIỆU ỨNG XUẤT HIỆN KHI CUỘN
+   HIỆU ỨNG FADE KHI CUỘN
 ============================================================ */
 
-const fadeElements = document.querySelectorAll(
+// Các phần cần xuất hiện khi cuộn
+const revealElements = document.querySelectorAll(
 
-".count-card,.timeline-item,.event-card,.gallery-item,.gift-card,.rsvp,.footer"
+`
+.count-card,
+.timeline-item,
+.event-card,
+.gallery-item,
+.gift-card,
+.rsvp,
+.footer
+`
 
 );
 
@@ -168,11 +291,11 @@ const fadeElements = document.querySelectorAll(
 
 function revealOnScroll(){
 
-    fadeElements.forEach((element)=>{
+    const windowHeight = window.innerHeight;
+
+    revealElements.forEach((element)=>{
 
         const top = element.getBoundingClientRect().top;
-
-        const windowHeight = window.innerHeight;
 
         if(top < windowHeight - 120){
 
@@ -186,71 +309,131 @@ function revealOnScroll(){
 
 
 
+// Chạy khi cuộn
 window.addEventListener("scroll",revealOnScroll);
 
+// Chạy khi tải trang
 revealOnScroll();
 /* ============================================================
-   LIGHTBOX
+   GALLERY LIGHTBOX
 ============================================================ */
 
+// Lấy các phần tử Gallery
 const galleryImages = document.querySelectorAll(".gallery-item img");
 
-const lightbox = document.querySelector("#lightbox");
+const lightbox = document.getElementById("lightbox");
 
-const lightboxImg = document.querySelector("#lightbox-img");
+const lightboxImg = document.getElementById("lightbox-img");
 
 const closeLightbox = document.querySelector(".close-lightbox");
 
 
 
-galleryImages.forEach((img)=>{
+/* ============================================================
+   MỞ LIGHTBOX
+============================================================ */
 
-    img.addEventListener("click",()=>{
+if(galleryImages.length > 0 && lightbox && lightboxImg){
 
-        lightbox.classList.add("active");
+    galleryImages.forEach((img)=>{
 
-        lightboxImg.src = img.src;
+        img.addEventListener("click",()=>{
+
+            lightbox.classList.add("active");
+
+            lightboxImg.src = img.src;
+
+            lightboxImg.alt = img.alt || "";
+
+            // Khóa cuộn khi xem ảnh
+            document.body.style.overflow = "hidden";
+
+        });
 
     });
 
-});
+}
 
 
 
-closeLightbox.addEventListener("click",()=>{
+/* ============================================================
+   ĐÓNG LIGHTBOX
+============================================================ */
+
+function closeGallery(){
+
+    if(!lightbox) return;
 
     lightbox.classList.remove("active");
 
-});
+    document.body.style.overflow = "";
+
+}
 
 
 
-lightbox.addEventListener("click",(e)=>{
+// Bấm nút X
+if(closeLightbox){
 
-    if(e.target===lightbox){
+    closeLightbox.addEventListener("click",closeGallery);
 
-        lightbox.classList.remove("active");
+}
+
+
+
+// Bấm nền đen
+if(lightbox){
+
+    lightbox.addEventListener("click",(e)=>{
+
+        if(e.target===lightbox){
+
+            closeGallery();
+
+        }
+
+    });
+
+}
+
+
+
+// Nhấn ESC
+document.addEventListener("keydown",(e)=>{
+
+    if(e.key==="Escape"){
+
+        closeGallery();
 
     }
 
 });
+
+
+
 /* ============================================================
-   SCROLL MƯỢT CHO CÁC LINK #
+   SCROLL MƯỢT
 ============================================================ */
 
 document.querySelectorAll('a[href^="#"]').forEach((anchor)=>{
 
     anchor.addEventListener("click",(e)=>{
 
-        e.preventDefault();
+        const href = anchor.getAttribute("href");
 
-        const target=document.querySelector(anchor.getAttribute("href"));
+        if(href==="#" || href==="") return;
+
+        const target = document.querySelector(href);
 
         if(target){
 
+            e.preventDefault();
+
             target.scrollIntoView({
 
-                behavior:"smooth"
+                behavior:"smooth",
+
+                block:"start"
 
             });
 
@@ -263,7 +446,20 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor)=>{
 
 
 /* ============================================================
-   WEBSITE ĐÃ KHỞI TẠO
+   HIỆU ỨNG KHI LOAD XONG
 ============================================================ */
 
-console.log("Wedding Website Ready ❤️");
+window.addEventListener("load",()=>{
+
+    document.body.classList.add("loaded");
+
+});
+
+
+
+/* ============================================================
+   LOG
+============================================================ */
+
+console.log("%cWedding Website Ready ❤️",
+"color:#C7A86B;font-size:16px;font-weight:bold;");
