@@ -26,22 +26,6 @@ const musicIcon = musicButton.querySelector("i");
 ============================================================ */
 
 let isPlaying = false;
-const tapHint = document.querySelector("#tapHint");
-/* ============================================================
-   SAU 5 GIÂY NHẮC NGƯỜI DÙNG
-============================================================ */
-
-setTimeout(()=>{
-
-    if(!isPlaying){
-
-        openButton.classList.add("attention");
-
-        tapHint.classList.add("show");
-
-    }
-
-},5000);
 
 
 /* ============================================================
@@ -88,19 +72,16 @@ function stopMusic(){
    MỞ THIỆP
 ============================================================ */
 
+/* ============================================================
+   MỞ THIỆP
+============================================================ */
+
 openButton.addEventListener("click",()=>{
 
-    // Tắt hiệu ứng nhắc
-    openButton.classList.remove("attention");
+    intro.style.opacity = "0";
 
-    tapHint.classList.remove("show");
+    intro.style.visibility = "hidden";
 
-    // Ẩn màn hình giới thiệu
-    intro.style.opacity="0";
-
-    intro.style.visibility="hidden";
-
-    // Phát nhạc
     playMusic();
 
 });
