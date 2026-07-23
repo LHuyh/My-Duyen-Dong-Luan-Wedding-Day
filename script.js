@@ -1,130 +1,106 @@
-/* ============================================================
-   WEBSITE WEDDING V3
+/* ==========================================================
+   WEDDING WEBSITE V4
+   SCRIPT.JS
    Author : ChatGPT x Long
-   File   : script.js
-   Phiên bản viết lại hoàn toàn
-============================================================ */
+========================================================== */
 
 
-/* ============================================================
-   LẤY CÁC PHẦN TỬ HTML
-============================================================ */
+/* ==========================================================
+   KHAI BÁO PHẦN TỬ HTML
+========================================================== */
 
-const intro = document.getElementById("intro");
+const intro = document.querySelector("#intro");
 
-const openButton = document.getElementById("openInvitation");
+const openButton = document.querySelector("#openInvitation");
 
-const bgMusic = document.getElementById("bgMusic");
+const bgMusic = document.querySelector("#bgMusic");
 
-const musicButton = document.getElementById("musicToggle");
+const musicButton = document.querySelector("#musicToggle");
 
-const musicIcon = musicButton
-    ? musicButton.querySelector("i")
-    : null;
+const musicIcon = musicButton.querySelector("i");
+
+const backToTop = document.querySelector("#backToTop");
 
 
 
-/* ============================================================
+/* ==========================================================
    BIẾN TRẠNG THÁI
-============================================================ */
+========================================================== */
 
-// Đã mở thiệp chưa
 let invitationOpened = false;
 
-// Nhạc đang phát?
 let isPlaying = false;
-
-
-
-/* ============================================================
-   PHÁT NHẠC
-============================================================ */
+/* ==========================================================
+   HÀM PHÁT NHẠC
+========================================================== */
 
 function playMusic(){
 
-    if(!bgMusic) return;
+    bgMusic.play()
+    .then(()=>{
 
-    bgMusic.play().catch(()=>{
-
-        console.log("Trình duyệt chặn Auto Play.");
-
-    });
-
-    isPlaying = true;
-
-    if(musicIcon){
+        isPlaying=true;
 
         musicIcon.classList.remove("fa-volume-xmark");
 
         musicIcon.classList.add("fa-volume-high");
 
-    }
-
-    if(musicButton){
-
         musicButton.classList.add("playing");
 
-    }
+    })
+    .catch(()=>{
+
+        console.log("Trình duyệt chặn autoplay.");
+
+    });
 
 }
 
 
 
-/* ============================================================
-   DỪNG NHẠC
-============================================================ */
+/* ==========================================================
+   HÀM DỪNG NHẠC
+========================================================== */
 
 function stopMusic(){
 
-    if(!bgMusic) return;
-
     bgMusic.pause();
 
-    isPlaying = false;
+    isPlaying=false;
 
-    if(musicIcon){
+    musicIcon.classList.remove("fa-volume-high");
 
-        musicIcon.classList.remove("fa-volume-high");
+    musicIcon.classList.add("fa-volume-xmark");
 
-        musicIcon.classList.add("fa-volume-xmark");
-
-    }
-
-    if(musicButton){
-
-        musicButton.classList.remove("playing");
-
-    }
+    musicButton.classList.remove("playing");
 
 }
-
-
-
-/* ============================================================
+/* ==========================================================
    MỞ THIỆP
-============================================================ */
+========================================================== */
 
-function openInvitation(playAudio = true){
+function openInvitation(playAudio=true){
 
     if(invitationOpened) return;
 
-    invitationOpened = true;
+    invitationOpened=true;
 
-    if(intro){
 
-        intro.style.transition = "opacity .8s ease";
 
-        intro.style.opacity = "0";
+    intro.style.opacity="0";
 
-        setTimeout(()=>{
+    intro.style.visibility="hidden";
 
-            intro.style.display = "none";
 
-        },800);
 
-    }
+    setTimeout(()=>{
 
-    // Chỉ phát nhạc khi click
+        intro.style.display="none";
+
+    },1200);
+
+
+
     if(playAudio){
 
         playMusic();
@@ -132,28 +108,21 @@ function openInvitation(playAudio = true){
     }
 
 }
-
-
-
-/* ============================================================
+/* ==========================================================
    CLICK MỞ THIỆP
-============================================================ */
+========================================================== */
 
-if(openButton){
+openButton.addEventListener("click",()=>{
 
-    openButton.addEventListener("click",()=>{
+    openInvitation(true);
 
-        openInvitation(true);
-
-    });
-
-}
+});
 
 
 
-/* ============================================================
-   SAU 5 GIÂY TỰ MỞ THIỆP
-============================================================ */
+/* ==========================================================
+   TỰ MỞ SAU 5 GIÂY
+========================================================== */
 
 setTimeout(()=>{
 
@@ -164,246 +133,153 @@ setTimeout(()=>{
     }
 
 },5000);
+/* ==========================================================
+   BẬT TẮT NHẠC
+========================================================== */
 
+musicButton.addEventListener("click",()=>{
 
+    if(isPlaying){
 
-/* ============================================================
-   BẬT / TẮT NHẠC
-============================================================ */
-
-if(musicButton){
-
-    musicButton.addEventListener("click",()=>{
-
-        if(isPlaying){
-
-            stopMusic();
-
-        }else{
-
-            playMusic();
-
-        }
-
-    });
-
-} 
-/* ============================================================
-   ĐẾM NGƯỢC ĐẾN NGÀY CƯỚI
-============================================================ */
-
-// Thời gian lễ cưới
-const weddingDate = new Date("December 12, 2026 11:00:00").getTime();
-
-
-
-/* ============================================================
-   CẬP NHẬT COUNTDOWN
-============================================================ */
-
-function updateCountdown(){
-
-    const now = new Date().getTime();
-
-    const distance = weddingDate - now;
-
-    // Nếu ngày cưới đã đến
-    if(distance <= 0){
-
-        document.getElementById("days").textContent = "00";
-        document.getElementById("hours").textContent = "00";
-        document.getElementById("minutes").textContent = "00";
-        document.getElementById("seconds").textContent = "00";
-
-        return;
+        stopMusic();
 
     }
 
-    // Tính ngày
-    const days = Math.floor(
-        distance / (1000 * 60 * 60 * 24)
+    else{
+
+        playMusic();
+
+    }
+
+});
+/* ==========================================================
+   ĐẾM NGƯỢC
+========================================================== */
+
+const weddingDate=new Date(
+
+"December 12, 2026 11:00:00"
+
+).getTime();
+
+
+
+function updateCountdown(){
+
+    const now=new Date().getTime();
+
+    const distance=weddingDate-now;
+
+
+
+    const days=Math.floor(distance/(1000*60*60*24));
+
+    const hours=Math.floor(
+
+        distance%(1000*60*60*24)
+
+        /(1000*60*60)
+
     );
 
-    // Tính giờ
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24))
-        / (1000 * 60 * 60)
+
+
+    const minutes=Math.floor(
+
+        distance%(1000*60*60)
+
+        /(1000*60)
+
     );
 
-    // Tính phút
-    const minutes = Math.floor(
-        (distance % (1000 * 60 * 60))
-        / (1000 * 60)
+
+
+    const seconds=Math.floor(
+
+        distance%(1000*60)
+
+        /1000
+
     );
 
-    // Tính giây
-    const seconds = Math.floor(
-        (distance % (1000 * 60))
-        / 1000
-    );
 
-    // Đổ dữ liệu lên giao diện
-    const dayBox = document.getElementById("days");
-    const hourBox = document.getElementById("hours");
-    const minuteBox = document.getElementById("minutes");
-    const secondBox = document.getElementById("seconds");
 
-    if(dayBox) dayBox.textContent = String(days).padStart(2,"0");
+    document.querySelector("#days").textContent=days;
 
-    if(hourBox) hourBox.textContent = String(hours).padStart(2,"0");
+    document.querySelector("#hours").textContent=hours;
 
-    if(minuteBox) minuteBox.textContent = String(minutes).padStart(2,"0");
+    document.querySelector("#minutes").textContent=minutes;
 
-    if(secondBox) secondBox.textContent = String(seconds).padStart(2,"0");
+    document.querySelector("#seconds").textContent=seconds;
 
 }
 
 
 
-// Chạy lần đầu
 updateCountdown();
 
-// Cập nhật mỗi giây
 setInterval(updateCountdown,1000);
+/* ==========================================================
+   REVEAL ANIMATION
+   Hiệu ứng xuất hiện khi cuộn
+========================================================== */
 
-
-
-/* ============================================================
-   HIỆU ỨNG FADE KHI CUỘN
-============================================================ */
-
-// Các phần cần xuất hiện khi cuộn
-const revealElements = document.querySelectorAll(
+const revealItems = document.querySelectorAll(
 
 `
-.count-card,
-.timeline-item,
-.event-card,
-.gallery-item,
-.gift-card,
-.rsvp,
-.footer
+.reveal-top,
+.reveal-bottom,
+.reveal-left,
+.reveal-right,
+.reveal-scale
 `
 
 );
 
+const revealObserver = new IntersectionObserver(
 
+(entries)=>{
 
-function revealOnScroll(){
+    entries.forEach((entry)=>{
 
-    const windowHeight = window.innerHeight;
+        if(entry.isIntersecting){
 
-    revealElements.forEach((element)=>{
-
-        const top = element.getBoundingClientRect().top;
-
-        if(top < windowHeight - 120){
-
-            element.classList.add("show");
+            entry.target.classList.add("active");
 
         }
 
     });
 
-}
+},
 
+{
 
-
-// Chạy khi cuộn
-window.addEventListener("scroll",revealOnScroll);
-
-// Chạy khi tải trang
-revealOnScroll();
-/* ============================================================
-   GALLERY LIGHTBOX
-============================================================ */
-
-// Lấy các phần tử Gallery
-const galleryImages = document.querySelectorAll(".gallery-item img");
-
-const lightbox = document.getElementById("lightbox");
-
-const lightboxImg = document.getElementById("lightbox-img");
-
-const closeLightbox = document.querySelector(".close-lightbox");
-
-
-
-/* ============================================================
-   MỞ LIGHTBOX
-============================================================ */
-
-if(galleryImages.length > 0 && lightbox && lightboxImg){
-
-    galleryImages.forEach((img)=>{
-
-        img.addEventListener("click",()=>{
-
-            lightbox.classList.add("active");
-
-            lightboxImg.src = img.src;
-
-            lightboxImg.alt = img.alt || "";
-
-            // Khóa cuộn khi xem ảnh
-            document.body.style.overflow = "hidden";
-
-        });
-
-    });
+    threshold:.18
 
 }
 
+);
 
+revealItems.forEach((item)=>{
 
-/* ============================================================
-   ĐÓNG LIGHTBOX
-============================================================ */
+    revealObserver.observe(item);
 
-function closeGallery(){
+});
+/* ==========================================================
+   NÚT LÊN ĐẦU TRANG
+========================================================== */
 
-    if(!lightbox) return;
+window.addEventListener("scroll",()=>{
 
-    lightbox.classList.remove("active");
+    if(window.scrollY>600){
 
-    document.body.style.overflow = "";
+        backToTop.classList.add("show");
 
-}
+    }
 
+    else{
 
-
-// Bấm nút X
-if(closeLightbox){
-
-    closeLightbox.addEventListener("click",closeGallery);
-
-}
-
-
-
-// Bấm nền đen
-if(lightbox){
-
-    lightbox.addEventListener("click",(e)=>{
-
-        if(e.target===lightbox){
-
-            closeGallery();
-
-        }
-
-    });
-
-}
-
-
-
-// Nhấn ESC
-document.addEventListener("keydown",(e)=>{
-
-    if(e.key==="Escape"){
-
-        closeGallery();
+        backToTop.classList.remove("show");
 
     }
 
@@ -411,29 +287,42 @@ document.addEventListener("keydown",(e)=>{
 
 
 
-/* ============================================================
-   SCROLL MƯỢT
-============================================================ */
+backToTop.addEventListener("click",()=>{
 
-document.querySelectorAll('a[href^="#"]').forEach((anchor)=>{
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+});
+/* ==========================================================
+   CUỘN MƯỢT
+========================================================== */
+
+document.querySelectorAll(
+
+'a[href^="#"]'
+
+).forEach((anchor)=>{
 
     anchor.addEventListener("click",(e)=>{
 
-        const href = anchor.getAttribute("href");
+        e.preventDefault();
 
-        if(href==="#" || href==="") return;
+        const target=document.querySelector(
 
-        const target = document.querySelector(href);
+            anchor.getAttribute("href")
+
+        );
 
         if(target){
 
-            e.preventDefault();
-
             target.scrollIntoView({
 
-                behavior:"smooth",
-
-                block:"start"
+                behavior:"smooth"
 
             });
 
@@ -442,24 +331,433 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor)=>{
     });
 
 });
+/* ==========================================================
+   GALLERY LIGHTBOX
+========================================================== */
+
+const galleryItems=document.querySelectorAll(
+
+".gallery-item img"
+
+);
+
+const lightbox=document.querySelector(
+
+"#lightbox"
+
+);
+
+const lightboxImg=document.querySelector(
+
+"#lightbox-img"
+
+);
+
+const closeBtn=document.querySelector(
+
+".close-lightbox"
+
+);
 
 
 
-/* ============================================================
-   HIỆU ỨNG KHI LOAD XONG
-============================================================ */
+galleryItems.forEach((img)=>{
 
-window.addEventListener("load",()=>{
+    img.addEventListener("click",()=>{
 
-    document.body.classList.add("loaded");
+        lightbox.classList.add("active");
+
+        lightboxImg.src=img.src;
+
+    });
 
 });
 
 
 
-/* ============================================================
-   LOG
-============================================================ */
+closeBtn.addEventListener("click",()=>{
 
-console.log("%cWedding Website Ready ❤️",
-"color:#C7A86B;font-size:16px;font-weight:bold;");
+    lightbox.classList.remove("active");
+
+});
+
+
+
+lightbox.addEventListener("click",(e)=>{
+
+    if(e.target===lightbox){
+
+        lightbox.classList.remove("active");
+
+    }
+
+});
+/* ==========================================================
+   LAZY LOAD IMAGE
+========================================================== */
+
+const lazyImages=document.querySelectorAll(
+
+"img[data-src]"
+
+);
+
+const imageObserver=new IntersectionObserver(
+
+(entries)=>{
+
+    entries.forEach((entry)=>{
+
+        if(entry.isIntersecting){
+
+            const img=entry.target;
+
+            img.src=img.dataset.src;
+
+            imageObserver.unobserve(img);
+
+        }
+
+    });
+
+},
+
+{
+
+    rootMargin:"120px"
+
+}
+
+);
+
+
+
+lazyImages.forEach((img)=>{
+
+    imageObserver.observe(img);
+
+});
+/* ==========================================================
+   PARALLAX HERO
+========================================================== */
+
+const hero=document.querySelector(".hero");
+
+
+
+window.addEventListener("scroll",()=>{
+
+    const y=window.scrollY;
+
+    hero.style.backgroundPositionY=
+
+    y*0.35+"px";
+
+});
+/* ==========================================================
+   WEBSITE READY
+========================================================== */
+
+window.addEventListener("load",()=>{
+
+    document.body.classList.add("loaded");
+
+    console.log(
+
+        "Wedding Website V4 Ready ❤️"
+
+    );
+
+});
+/* ==========================================================
+   IMAGE LOADED
+========================================================== */
+
+document.querySelectorAll(".gallery-item img")
+
+.forEach((img)=>{
+
+    img.onload=()=>{
+
+        img.parentElement.classList.add(
+
+            "loaded"
+
+        );
+
+    };
+
+});
+/* ==========================================================
+   ESC ĐÓNG LIGHTBOX
+========================================================== */
+
+document.addEventListener(
+
+"keydown",
+
+(e)=>{
+
+    if(e.key==="Escape"){
+
+        lightbox.classList.remove(
+
+            "active"
+
+        );
+
+    }
+
+});
+/* ==========================================================
+   CLICK NGOÀI ẢNH
+========================================================== */
+
+lightbox.addEventListener(
+
+"click",
+
+(e)=>{
+
+    if(e.target===lightbox){
+
+        lightbox.classList.remove(
+
+            "active"
+
+        );
+
+    }
+
+});
+/* ==========================================================
+   PARALLAX LÁ OLIVE
+========================================================== */
+
+const leaves=document.querySelectorAll(
+
+".leaf"
+
+);
+
+window.addEventListener(
+
+"scroll",
+
+()=>{
+
+    const y=window.scrollY;
+
+    leaves.forEach((leaf,index)=>{
+
+        leaf.style.transform=
+
+        `translateY(${y*(0.05+index*0.02)}px)`;
+
+    });
+
+});
+/* ==========================================================
+   TẠO CÁNH HOA
+========================================================== */
+
+const petals=document.querySelector(".petals");
+
+function createPetal(){
+
+    const petal=document.createElement("span");
+
+    petal.className="petal";
+
+    petal.style.left=Math.random()*100+"vw";
+
+    petal.style.animationDuration=
+
+    8+Math.random()*8+"s";
+
+    petal.style.opacity=Math.random();
+
+    petal.style.width=
+
+    10+Math.random()*14+"px";
+
+    petal.style.height=
+
+    petal.style.width;
+
+    petals.appendChild(petal);
+
+    setTimeout(()=>{
+
+        petal.remove();
+
+    },16000);
+
+}
+
+setInterval(createPetal,700);
+/* ==========================================================
+   TYPE WRITER
+========================================================== */
+
+const heroTitle=document.querySelector(
+
+".hero__text"
+
+);
+
+if(heroTitle){
+
+const text=heroTitle.innerHTML;
+
+heroTitle.innerHTML="";
+
+let i=0;
+
+function typing(){
+
+    if(i<text.length){
+
+        heroTitle.innerHTML+=text.charAt(i);
+
+        i++;
+
+        setTimeout(typing,25);
+
+    }
+
+}
+
+setTimeout(typing,1800);
+
+}
+/* ==========================================================
+   WEBSITE LOADER
+========================================================== */
+
+const loader=document.querySelector("#loader");
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        loader.classList.add("hide");
+
+    },1200);
+
+});
+/* ==========================================================
+   ACTIVE MENU
+========================================================== */
+
+const sections=document.querySelectorAll("section");
+
+const navLinks=document.querySelectorAll(".floating-nav a");
+
+window.addEventListener("scroll",()=>{
+
+    let current="";
+
+    sections.forEach(section=>{
+
+        const top=section.offsetTop-200;
+
+        if(scrollY>=top){
+
+            current=section.id;
+
+        }
+
+    });
+
+    navLinks.forEach(link=>{
+
+        link.classList.remove("active");
+
+        if(
+
+        link.getAttribute("href")
+
+        ==="#"+current){
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+/* ==========================================================
+   SECTION SHOW
+========================================================== */
+
+const allSections=document.querySelectorAll("section");
+
+const observer=new IntersectionObserver(
+
+(entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+},
+
+{
+
+    threshold:.2
+
+}
+
+);
+
+allSections.forEach(section=>{
+
+    observer.observe(section);
+
+});
+/* ==========================================================
+   MOUSE LIGHT
+========================================================== */
+
+const mouseLight=document.querySelector(".mouse-light");
+
+document.addEventListener("mousemove",(e)=>{
+
+    mouseLight.style.left=e.clientX+"px";
+
+    mouseLight.style.top=e.clientY+"px";
+
+});
+const cursor=document.querySelector(".cursor");
+
+document.addEventListener("mousemove",(e)=>{
+
+cursor.style.left=e.clientX+"px";
+
+cursor.style.top=e.clientY+"px";
+
+});
+const progress=document.querySelector("#progressBar");
+
+window.addEventListener("scroll",()=>{
+
+const h=document.documentElement;
+
+const percent=
+
+h.scrollTop/
+
+(h.scrollHeight-h.clientHeight)
+
+*100;
+
+progress.style.width=percent+"%";
+
+});
