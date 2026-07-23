@@ -2205,14 +2205,40 @@ transform:translateX(120%);
 
 
 @media(max-width:768px){
+.count-grid{
 
-    .count-grid{
+    display:grid;
 
-        grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(4,1fr) !important;
 
-        gap:15px;
+    gap:20px;
 
-    }
+}
+
+
+.count-item{
+
+    height:120px;
+
+    background:linear-gradient(
+        135deg,
+        #d4af37,
+        #f5d77a
+    );
+
+    border-radius:24px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(212,175,55,.25);
 
 }
 
@@ -2221,28 +2247,25 @@ transform:translateX(120%);
 
     display:block;
 
-    font-size:50px;
+    font-size:55px;
 
-    font-weight:600;
+    line-height:1;
 
-}
+    font-weight:700;
 
+    color:#fff;
 
-@media(max-width:768px){
-
-    .count-item span{
-
-        font-size:35px;
-
-    }
+    margin-bottom:8px;
 
 }
-.count-grid{
 
-    display:grid !important;
 
-    grid-template-columns:repeat(4,1fr) !important;
+.count-item small{
 
-    gap:20px;
+    font-size:16px;
+
+    color:#fff;
+
+    letter-spacing:1px;
 
 }
