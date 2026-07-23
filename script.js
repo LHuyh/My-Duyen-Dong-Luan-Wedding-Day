@@ -74,36 +74,43 @@ function stopMusic(){
 
 let invitationOpened = false;
 
+// Hàm mở thiệp
 function openInvitation(playAudio = true){
 
-    // Nếu đã mở thì không chạy nữa
+    // Nếu đã mở rồi thì không mở lại
     if(invitationOpened) return;
 
     invitationOpened = true;
 
-    // Ẩn Intro
-    intro.style.opacity = "0";
-    intro.style.visibility = "hidden";
+    // Hiệu ứng mờ dần
+    intro.style.transition = "opacity 0.8s ease";
 
-    // Chỉ phát nhạc khi người dùng bấm
+    intro.style.opacity = "0";
+
+    // Sau khi mờ xong thì bỏ khỏi màn hình
+    setTimeout(() => {
+
+        intro.style.display = "none";
+
+    }, 800);
+
+    // Chỉ phát nhạc khi người dùng bấm nút
     if(playAudio){
+
         playMusic();
+
     }
 
 }
 
-// Người dùng bấm mở thiệp
+// Người dùng bấm nút mở thiệp
 openButton.addEventListener("click", () => {
 
     openInvitation(true);
 
 });
 
-
-/* ============================================================
-   TỰ ĐỘNG MỞ THIỆP SAU 5 GIÂY
-============================================================ */
-
+// Sau 5 giây tự mở thiệp nếu chưa bấm
 setTimeout(() => {
 
     if(!invitationOpened){
