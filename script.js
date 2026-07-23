@@ -231,7 +231,10 @@ const revealItems = document.querySelectorAll(
 .reveal-bottom,
 .reveal-left,
 .reveal-right,
-.reveal-scale
+.reveal-scale,
+.reveal-title,
+.reveal-up,
+.reveal-width
 `
 
 );
